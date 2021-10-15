@@ -22,6 +22,10 @@ Route::get('register', function () {
 Route::get('login', function () {
     return view('login');
 });
+
+Route::get('home', function () {
+    return view('home');
+})->name('home')->middleware('loginRole');
 Route::post('login','App\Http\Controllers\UserController@login')->name('login');
 Route::post('getInfo','App\Http\Controllers\UserController@register')->name('getInfo');
 Route::get('logout','App\Http\Controllers\UserController@logout')->name('logout');

@@ -9,7 +9,7 @@
 			<!-- Start Banner website -->
             <div class="row">
 				<div class="col-md-12">
-					<img src="http://itplus-academy.edu.vn/upload/e0299984838d38ecac3805d4d6661829/files/banner%20sao%20khue-03.jpg" alt="IT-Plus" class="responsive" style="width: 100%;" />
+					<img src="https://tapchisieuxe.com/wp-content/uploads/2020/10/van-hoa-do-sieu-xe-o-nhat-ban-doc-dao-va-dien-ro-so-mot-the-gioi-0-1.jpg" alt="showroom" class="responsive" style="width: 100%; height: 300px" />
 				</div>
 </div>
 			<!-- End banner website -->

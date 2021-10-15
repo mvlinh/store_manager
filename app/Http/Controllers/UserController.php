@@ -32,7 +32,8 @@ class UserController extends Controller
             return view('home',$email);
         }   
         else {
-            return view('login');
+            $email['mess'] = 'Tên đăng nhập hoặc mật khẩu không đúng';
+            return view('login',$email);
         }
     }
     public function register(Request $request)
@@ -46,7 +47,7 @@ class UserController extends Controller
             // 'position_id' =>$request->position_id,
             // 'DoB' => $request->DoB,
             'email' => $email,
-            'password' => ($passw),
+            'password' => bcrypt($passw),
         ]);
          return view('login');
     }
