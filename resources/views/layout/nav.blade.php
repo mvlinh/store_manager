@@ -16,7 +16,7 @@
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
 									
 									<ul class="dropdown-menu">
-										<li><a href="#">Thông tin</a></li>
+										<li><a href="#">Thông Báo</a></li>
 										<li><a href="{{route('logout')}}">Đăng xuất</a></li>
 									</ul>
 								</li>
