@@ -26,6 +26,12 @@ Route::get('login', function () {
 Route::get('home', function () {
     return view('home');
 })->name('home')->middleware('loginRole');
+
 Route::post('login','App\Http\Controllers\UserController@login')->name('login');
 Route::post('getInfo','App\Http\Controllers\UserController@register')->name('getInfo');
 Route::get('logout','App\Http\Controllers\UserController@logout')->name('logout');
+
+//addcustomer
+Route::get('customers', 'App\Http\Controllers\CustomerController@index')->name('customers');
+Route::get('customers/create', 'App\Http\Controllers\CustomerController@create')->name('customers.create');
+Route::post('customers/store', 'App\Http\Controllers\CustomerController@store')->name('customers.store');

@@ -4,7 +4,7 @@
 	<body>
 		<div class="container" onmouseover = "increase();">
         <div class="row">
-				@include('layout.nav');
+				@include('layout.nav')
 			</div>
 			<!-- Start Banner website -->
             <div class="row">
@@ -38,4 +38,3 @@
         </div>
 	</body>
 </html>
-

@@ -4,7 +4,7 @@
 						  <li class="list-group-item"><b>QUẢN TRỊ </b></li>
 
 						  <li class="list-group-item">
-						  	<a href="#">Thêm khách hàng mới</a>
+						  	<a href="{{URL::to('customers/create')}}">Thêm khách hàng mới</a>
 						  </li>
 
 						  <li class="list-group-item">

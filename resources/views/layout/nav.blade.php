@@ -11,20 +11,16 @@
 								</button>
 								<a class="navbar-brand" href="#">Logo</a>
 							</div>
-					
-							<!-- Collect the nav links, forms, and other content for toggling -->
-							<!-- <div class="collapse navbar-collapse navbar-ex1-collapse"> -->
-								
-								<ul class="nav navbar-nav navbar-right">
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$info}}<b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Thông tin</a></li>
-											<li><a href="{{route('logout')}}">Đăng xuất</a></li>
-										</ul>
-									</li>
-								</ul>
-							<!-- </div>/.navbar-collapse -->
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+									
+									<ul class="dropdown-menu">
+										<li><a href="#">Thông tin</a></li>
+										<li><a href="{{route('logout')}}">Đăng xuất</a></li>
+									</ul>
+								</li>
+							</ul>
 						</div>
 					</nav>
 				</div>
