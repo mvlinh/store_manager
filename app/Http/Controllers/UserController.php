@@ -25,12 +25,12 @@ class UserController extends Controller
     {
        
         $email['info'] = $request->user;
-        $email['name'] = DB::table('employees')->where('email', $request->user)->first()->name;
 
         $passw = ($request->passw) ;
 
         if(Auth::attempt(['email'=>$email,'password'=>$passw])){
-            
+            $email['info'] = $request->user;
+            $email['name'] = DB::table('employees')->where('email', $request->user)->first()->name;
             return view('home',$email);
         }   
         else {
