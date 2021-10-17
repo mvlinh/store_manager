@@ -13,7 +13,7 @@
 							</div>
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}}<b class="caret"></b></a>
 									
 									<ul class="dropdown-menu">
 										<li><a href="#">Thông Báo</a></li>

@@ -4,11 +4,11 @@
 						  <li class="list-group-item"><b>QUẢN TRỊ </b></li>
 
 						  <li class="list-group-item">
-						  	<a href="{{URL::to('customers/create')}}">Thêm khách hàng mới</a>
+						  	<a href="{{route('addCustomer')}}">Thêm mới Khách Hàng</a>
 						  </li>
 
 						  <li class="list-group-item">
-						  	<a href="#">Tìm kiếm thông tin khách hàng</a>
+						  	<a href="{{route('manager_customer')}}">khách hàng đang chăm sóc</a>
 						  </li>
                           <li class="list-group-item">
 						  	<a href="#">Chuyển chăm sóc khách hàng</a>

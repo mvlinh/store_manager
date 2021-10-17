@@ -5,7 +5,7 @@
   <div class="container">
 		<div class="row" style="margin-top: 150px; line-height: 40px;">
 			<div class="col-md-6 col-md-push-3">
-            <form action="{{route('login')}}" method="POST">
+            <form action="{{route('home')}}" method="POST">
                 @csrf
 						<legend>Đăng nhập hệ thống</legend>
 						
