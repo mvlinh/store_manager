@@ -41,3 +41,5 @@ Route::post('customers/store', 'App\Http\Controllers\CustomerController@store')-
 Route::get('manager_customer','App\Http\Controllers\CustomerController@show_customer')->name('manager_customer');
 Route::post('addCustomer','App\Http\Controllers\CustomerController@addCustomer')->name('addCustomer');
 Route::get('addCustomer','App\Http\Controllers\CustomerController@addCustomer')->name('addCustomer');
+Route::post('getDataCustomer','App\Http\Controllers\CustomerController@getDataCustomer')->name('getDataCustomer');
+Route::get('getDataCustomer','App\Http\Controllers\CustomerController@getDataCustomer')->name('getDataCustomer');

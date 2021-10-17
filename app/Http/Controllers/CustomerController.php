@@ -66,4 +66,13 @@ class CustomerController extends Controller
         return view('pages.customers.add',$customer);
         
     }
+    public function getDataCustomer(Request $request){
+        
+        $phone = '%'.$request->phone.'%';
+        $customer = DB::table('customer')
+        ->where('phone', 'like', $phone)
+        ->get();
+        return response()->json($customer);
+
+    }
 }

@@ -75,8 +75,8 @@
       <th scope="col">status</th>
     </tr>
   </thead>
-  <tbody>
     <?php $i =0;?>
+  <tbody>
     @foreach($customer as $cus)
     <tr>
       <td scope="row">@php $i++; echo $i @endphp</td>
@@ -90,13 +90,40 @@
 </table>
         {{ $customer->links() }}
 <script>
-   
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
  
+        $('#validationDefault01').on('keyup', function() {
+            let phone = this.value;
+            $.ajax({
+                url : "{{route('getDataCustomer')}}",
+                type : 'post',
+                data : {
+                    phone: phone
+                },
+
+                success : function(result){
+                    if(result.length == 0){$('#customerTable tbody').html("Khách Hàng Chưa Tồn Tại")}
+                    else{
+                        let i = 1;
+                        $('#customerTable tbody').html('<tr><td>'+ i+'</td><td>'+result[i].name+'</td><td>'+result[i].phone+'</td><td>'+result[i].address+'</td><td>'+result[i].status+'</td></tr>');
+                        for(let i = 2; i < result.length; i++){
+                            $('#customerTable tbody').append('<tr><td>'+i +'</td><td>'+result[i].name+'</td><td>'+result[i].phone+'</td><td>'+result[i].address+'</td><td>'+result[i].status+'</td></tr>');
+                    
+                        }
+                    }
+
+                },
+                error : function(){
+                    console.log('error');
+                }
+            })
+        });
+
+    
     $("#add-customer").submit(function(e){
         e.preventDefault();
         let name = $("#name").val();
@@ -125,7 +152,7 @@
                         alert('Số Điện Thoại đã tồn tại');
                     }
                     else{
-                        $('#customerTable tbody').prepend('<tr><td>'+ @php $i++; echo $i @endphp + '</td><td>'+result.name+'</td><td>'+result.phone+'</td><td>'+result.address+'</td><td>'+result.status+'</td></tr>');
+                        $('#customerTable tbody').append('<tr><td>'+ @php $i++; echo $i @endphp + '</td><td>'+result.name+'</td><td>'+result.phone+'</td><td>'+result.address+'</td><td>'+result.status+'</td></tr>');
                     }
                     
                     $('#add-customer')[0].reset();
