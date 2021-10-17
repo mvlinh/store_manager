@@ -16,7 +16,7 @@ class CreateProductTable extends Migration
         Schema::create('product', function (Blueprint $table) {
             $table->integer('id')->unsigned()->autoIncrement();
             $table->string('name',30);
-            $table->float('price');
+            $table->double('price');
             $table->float('commission');
             $table->timestamps();
         });

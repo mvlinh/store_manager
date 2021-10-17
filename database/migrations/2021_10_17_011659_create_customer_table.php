@@ -19,7 +19,7 @@ class CreateCustomerTable extends Migration
             $table->integer('employee_id')->unsigned();
             $table->integer('phone')->unique();
             $table->string('address',255);
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default('1');
             $table->string('email',255)->default(null);
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->timestamps();

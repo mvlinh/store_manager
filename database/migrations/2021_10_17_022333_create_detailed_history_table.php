@@ -18,6 +18,7 @@ class CreateDetailedHistoryTable extends Migration
             $table->integer('emp_send_id')->unsigned();
             $table->integer('emp_receive_id')->unsigned();
             $table->integer('customer_id')->unsigned();
+            $table->integer('status')->default('1');
             $table->foreign('emp_send_id')->references('id')->on('employees');
             $table->foreign('emp_receive_id')->references('id')->on('employees');
             $table->foreign('customer_id')->references('id')->on('customer');

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Aws\History;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(EmployeesSeeder::class);
+        $this->call(CustomerSeeder::class);
+        $this->call(ProductSeeder::class);
+        $this->call(BillSeeder::class);
+        $this->call(Detailed_billSeeder::class);
+        $this->call(DetailedProductCareSeeder::class);
+        $this->call(FollowSeeder::class);
+        $this->call(Detailed_historySeeder::class);
     }
 }

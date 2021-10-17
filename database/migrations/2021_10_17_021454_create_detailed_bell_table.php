@@ -17,7 +17,7 @@ class CreateDetailedBellTable extends Migration
             $table->integer('bill_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->integer('quantity');
-            $table->primary('bill_id','product_id');
+            $table->primary(['bill_id','product_id']);
             $table->foreign('bill_id')->references('id')->on('bill');
             $table->foreign('product_id')->references('id')->on('product');
             $table->timestamps();
