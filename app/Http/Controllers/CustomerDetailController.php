@@ -17,14 +17,19 @@ class CustomerDetailController extends Controller
     public function customer_detail($id){
         $customer['id'] = $id;
         $customer['detail'] = DB::table('customer')
-                            ->join('employees', 'employees.id', '=', 'customer.id')
+                            ->join('employees', 'employees.id', '=', 'employee_id')
+                            ->where('customer.id',$id)
+                            ->select('customer.id as id','customer.name as customer_name','employees.name')
+                            ->get();
+        $customer['detail_product_care'] = DB::table('customer')
+                            ->join('employees', 'employees.id', '=', 'employee_id')
                             ->join('detailed_product_care', 'customer_id', '=', 'customer.id')
                             ->join('product', 'product.id', '=', 'product_id')
                             ->where('customer.id',$id)
-                            ->select('customer.id as id','customer.name as customer_name','employees.name','product.name as product_name','product.id as product_id')
+                            ->select('customer.id as id','customer.name as customer_name','employees.name','product.name as product_name','product_id')
                             ->get();
         $product_care  = array();
-        foreach($customer['detail'] as $product){
+        foreach($customer['detail_product_care'] as $product){
             array_push ($product_care, $product->product_id);
         }
         $customer['product_nocare'] = DB::table('product')

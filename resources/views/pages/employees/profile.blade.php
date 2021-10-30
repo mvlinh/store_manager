@@ -91,12 +91,16 @@
         <div class="card p-4">
             <div class=" image d-flex flex-column justify-content-center align-items-center">
                  <button class="btn btn-secondary"> <img src="https://pdp.edu.vn/wp-content/uploads/2021/06/hinh-anh-gai-xinh-de-thuong-nhat-1.jpg" height="100" width="100" /></button>
-                <div class="name mt-3">Name: {{$employee->name}}</div>
+                <div class="name mt-3" style="margin-top: 20px;">Name: {{$employee->name}}</div>
                 <div class="idd">Email: {{$employee->email}}</div>
                 <div class=" mt-3">Date of birth: {{$employee->DoB}}</div>
                 <div class=" mt-3">Position: {{$position->name}}</div>
-
                 
+                @if(!empty($_GET['pay']))
+                    <div style="color: red;">
+                    {{$_GET['start_at']}}  --  {{$_GET['end_at']}}: {{number_format($_GET['pay'], 0, '', ',')}} vnd
+                    </div>
+                @endif
                 <div class="d-flex flex-row justify-content-center align-items-center mt-3"><span class="">Customer: </span> <span class="number">{{count($customer)}} people</span>
                 </div>
                 <div class=" d-flex mt-2"> <button id ='payroll' class="btn1 btn-dark btn-danger">Payroll</button> </div>
@@ -106,11 +110,11 @@
                     @csrf
                     <div class="col-md-3">
                         <label for="validationCustom01" class="form-label">Start</label>
-                        <input type="date" style="width: 200px;" class="form-control" id="name" name = 'DoB1' value="" required placeholder="dd/mm/yyyy">
+                        <input type="date" style="width: 200px;" class="form-control" id="name" name = 'start' value="" required placeholder="dd/mm/yyyy">
                     </div>
                     <div class="col-md-3">
                     <label for="validationCustom01" class="form-label">End</label>
-                        <input type="date" style="width: 200px;" class="form-control" id="name" name = 'DoB2'  required placeholder="dd/mm/yyyy">
+                        <input type="date" style="width: 200px;" class="form-control" id="name" name = 'end' value="" required placeholder="dd/mm/yyyy">
                     </div>
                     <div class="col-md-12" style="margin-top: 10px;">
                         <button class="btn btn-primary" name="submit"  type="submit">Check</button>

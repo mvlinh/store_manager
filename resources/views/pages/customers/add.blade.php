@@ -82,7 +82,7 @@
     <tr>
       <td scope="row">@php $i++; echo $i @endphp</td>
       <td>{{$cus->name}}</td>
-      <td>0{{$cus->phone}}</td>
+      <td>{{$cus->phone}}</td>
       <td>{{$cus->address}}</td>
       <td>{{$cus->status}}</td>
       <td><a href="{{route('customer_detail',['id'=>$cus->id])}}">chi tiết</a></td>
@@ -90,6 +90,7 @@
     @endforeach
   </tbody>
 </table>
+
 <div id = "nextpage">
 {{ $customer->links() }}
 </div>
@@ -116,14 +117,15 @@
                     }
                     else{
                       $('.add-customer').hide();
+                      console.log(result);
                         let i = 0;
-                        $('#customerTable tbody').html('<tr><td>'+ 1 +'</td><td>'+result[i].name+'</td><td>'+result[i].phone+'</td><td>'+result[i].address+'</td><td>'+result[i].status+'</td></tr>');
+                        $('#customerTable tbody').html('<tr><td>'+ 1 +'</td><td>'+result[i].name+'</td><td>'+result[i].phone+'</td><td>'+result[i].address+'</td><td>'+result[i].status+'</td><td> <a href="customer_detail/'+result[i].id+'">chi tiết</a> </td></tr>');
                         let length = 0;
                         if (result.length>5) length =5;
                         else length = result.length;
                         for(let i = 1; i < length; i++){
                           let j = i + 1;
-                            $('#customerTable tbody').append('<tr><td>'+ j +'</td><td>'+result[i].name+'</td><td>'+result[i].phone+'</td><td>'+result[i].address+'</td><td>'+result[i].status+'</td></tr>');
+                            $('#customerTable tbody').append('<tr><td>'+ j +'</td><td>'+result[i].name+'</td><td>'+result[i].phone+'</td><td>'+result[i].address+'</td><td>'+result[i].status+'</td><td> <a href="customer_detail/'+result[i].id+'">chi tiết</a> </td></tr>');
                         }
                         console.log(result);
                     }

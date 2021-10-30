@@ -6,7 +6,7 @@
    Name: {{$detail['0']->customer_name}} <br>
    Employees_care: {{$detail['0']->name}}<br>
    Product Care :  
-   @foreach($detail as $pro)
+   @foreach($detail_product_care as $pro)
         {{$pro->product_name}},
    @endforeach
         <span data-toggle="modal" data-target="#add" style="color: red;">
