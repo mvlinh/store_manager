@@ -4,36 +4,16 @@ namespace App\Http\Controllers;
 use DB;
 use App\Http\Requests\CustomerRuest;
 use App\Models\Customers;
+use App\Models\detail_product_care;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class CustomerController extends Controller
 {
     public function index(){
-        // $customer = Customers::select('id','name', 'phone', 'email', 'status','address', 'created_at', 'id_employee')
-        //     ->paginate(5);
-
-        // return view('pages.customers.index',
-        //     [
-        //         'customer' => $customer
-        //     ]
-        // );
+      
     }
 
-    // public function create()
-    // {
-    //     return view('pages.customers.create'); 
-    // }
-
-    // public function store(CustomerRuest $request)
-    // {
-    //     if($request->has('btn-submit')){
-    //         $data = $request->except(['_token', 'btn-submit']);
-    //         Customers::create($data);
-
-    //         return redirect()->route('customers')->with('message', 'Add customer success');      
-    //     }
-    //     return redirect()->route('customers'); 
-    // }
+   
     public function show_customer(Request $request){
         $customer['cus'] = DB::table('customer')->where('employee_id', Auth::id())->get();
         return view('pages.customers.show',$customer);
@@ -43,9 +23,10 @@ class CustomerController extends Controller
     //     return view('pages.customers.add',$customer);
     // }
     public function addCustomer(Request $request){
-        // echo 1;
-        // {{$request->name}}
-        
+        // $rules = [
+        //     'email' => 'required|email|unique:customer'
+        // ];
+        // $request->validate($data,$rules);
         if($request->name != null&&$request->phone != null){
             $flag = DB::table('customer')->where('phone',$request->phone)->first();
             if($flag){
@@ -68,9 +49,9 @@ class CustomerController extends Controller
     }
     public function getDataCustomer(Request $request){
         
-        $phone = '%'.$request->phone.'%';
+        $phone = $request->phone;
         $customer = DB::table('customer')
-        ->where('phone', 'like', $phone)
+        ->where('phone', 'like', '%'.$phone.'%')
         ->get();
         return response()->json($customer);
 

@@ -11,10 +11,13 @@
 						  	<a href="{{route('manager_customer')}}">khách hàng đang chăm sóc</a>
 						  </li>
                           <li class="list-group-item">
+						  	<a href="{{route('invoice')}}">Xuất hóa đơn</a>
+						  </li>
+						  <li class="list-group-item">
 						  	<a href="#">Chuyển chăm sóc khách hàng</a>
 						  </li>
                           <li class="list-group-item">
-						  	<a href="#">Xem thông tin cá nhân</a>
+						  	<a href="{{route('self_profile')}}">Xem thông tin cá nhân</a>
 						  </li>
 						</ul>
 </div>

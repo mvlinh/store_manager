@@ -3,16 +3,17 @@
 <html lang="">
 @include ('layout.head')
 	<body>
-		<div class="container" >
+		<div class="container-fuild" >
 			<div class="row">
 					@include('layout.nav')
 				</div>
 				<!-- Start Banner website -->
 				<div class="row">
 					<div class="col-md-12">
-						<img src="https://tapchisieuxe.com/wp-content/uploads/2020/10/van-hoa-do-sieu-xe-o-nhat-ban-doc-dao-va-dien-ro-so-mot-the-gioi-0-1.jpg" alt="showroom" class="responsive" style="width: 100%; height: 300px" />
+						<!-- <img src="https://tapchisieuxe.com/wp-content/uploads/2020/10/van-hoa-do-sieu-xe-o-nhat-ban-doc-dao-va-dien-ro-so-mot-the-gioi-0-1.jpg" alt="showroom" class="responsive" style="width: 100%; height: 300px" /> -->
 					</div>
 			</div>
+			@yield('customer_detail')
 			<!-- End banner website -->
 
 			<!-- Start main -->

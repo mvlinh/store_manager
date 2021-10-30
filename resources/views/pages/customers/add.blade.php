@@ -7,7 +7,7 @@
     <input type="text" class="form-control" id="validationDefault01" value="" placeholder="0985734161" required>
   </div>
   <div class="col-md-6" style="margin-top: 24px;">
-    <button class="btn btn-danger" type="" data-toggle="modal" data-target="#customerModal">Thêm mới</button>
+    <button class="btn btn-danger add-customer" style="display: none" type="" data-toggle="modal" data-target="#customerModal">Thêm mới</button>
   </div>
 
 
@@ -73,6 +73,7 @@
       <th scope="col">Phone</th>
       <th scope="col">Address</th>
       <th scope="col">status</th>
+      <th scope="col">details</th>
     </tr>
   </thead>
     <?php $i =0;?>
@@ -84,11 +85,14 @@
       <td>0{{$cus->phone}}</td>
       <td>{{$cus->address}}</td>
       <td>{{$cus->status}}</td>
+      <td><a href="{{route('customer_detail',['id'=>$cus->id])}}">chi tiết</a></td>
     </tr>
     @endforeach
   </tbody>
 </table>
-        {{ $customer->links() }}
+<div id = "nextpage">
+{{ $customer->links() }}
+</div>
 <script>
         $.ajaxSetup({
             headers: {
@@ -101,19 +105,27 @@
             $.ajax({
                 url : "{{route('getDataCustomer')}}",
                 type : 'post',
-                data : {
-                    phone: phone
+                data : {        phone: phone
                 },
 
                 success : function(result){
-                    if(result.length == 0){$('#customerTable tbody').html("Khách Hàng Chưa Tồn Tại")}
+                    $('#nextpage').hide();
+                    if(result.length == 0){
+                      $('#customerTable tbody').html("Khách Hàng Chưa Tồn Tại");
+                      $('.add-customer').show();
+                    }
                     else{
-                        let i = 1;
-                        $('#customerTable tbody').html('<tr><td>'+ i+'</td><td>'+result[i].name+'</td><td>'+result[i].phone+'</td><td>'+result[i].address+'</td><td>'+result[i].status+'</td></tr>');
-                        for(let i = 2; i < result.length; i++){
-                            $('#customerTable tbody').append('<tr><td>'+i +'</td><td>'+result[i].name+'</td><td>'+result[i].phone+'</td><td>'+result[i].address+'</td><td>'+result[i].status+'</td></tr>');
-                    
+                      $('.add-customer').hide();
+                        let i = 0;
+                        $('#customerTable tbody').html('<tr><td>'+ 1 +'</td><td>'+result[i].name+'</td><td>'+result[i].phone+'</td><td>'+result[i].address+'</td><td>'+result[i].status+'</td></tr>');
+                        let length = 0;
+                        if (result.length>5) length =5;
+                        else length = result.length;
+                        for(let i = 1; i < length; i++){
+                          let j = i + 1;
+                            $('#customerTable tbody').append('<tr><td>'+ j +'</td><td>'+result[i].name+'</td><td>'+result[i].phone+'</td><td>'+result[i].address+'</td><td>'+result[i].status+'</td></tr>');
                         }
+                        console.log(result);
                     }
 
                 },

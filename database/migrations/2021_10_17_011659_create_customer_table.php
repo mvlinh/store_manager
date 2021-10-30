@@ -17,7 +17,7 @@ class CreateCustomerTable extends Migration
             $table->integer('id')->unsigned()->autoIncrement();
             $table->string('name',50);
             $table->integer('employee_id')->unsigned();
-            $table->integer('phone')->unique();
+            $table->string('phone',12)->unique();
             $table->string('address',255);
             $table->tinyInteger('status')->default('1');
             $table->string('email',255)->default(null);

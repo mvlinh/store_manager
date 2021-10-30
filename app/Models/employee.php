@@ -5,28 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customers extends Model
+class employee extends Model
 {
     use HasFactory;
-    protected $table = 'customer';
+    protected $table = 'employees';
 
 
     protected $quarded = [];
     public $timestames = true;
 
     protected $fillable = [
-        'name', 
-        'employees_id',
+        'id', 
+        'name',
+        'position_id',
         'phone',
+        'DoB',
         'address',
         'email',
-        'status',
+        'password',
     ];
-
-    // protected $primaryKey = 'id_employee';
-
-    // public function user(){
-    //     return $this->belongsTo('App\Models\User', 'id_employee','id');
-    // }
-    
 }

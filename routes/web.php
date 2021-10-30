@@ -43,3 +43,28 @@ Route::post('addCustomer','App\Http\Controllers\CustomerController@addCustomer')
 Route::get('addCustomer','App\Http\Controllers\CustomerController@addCustomer')->name('addCustomer');
 Route::post('getDataCustomer','App\Http\Controllers\CustomerController@getDataCustomer')->name('getDataCustomer');
 Route::get('getDataCustomer','App\Http\Controllers\CustomerController@getDataCustomer')->name('getDataCustomer');
+// customer detail
+
+Route::get('customer_detail/{id}','App\Http\Controllers\CustomerDetailController@customer_detail')->name('customer_detail');
+Route::get('add_product_care/{cus_id}/{pro_id}','App\Http\Controllers\CustomerDetailController@add_product_care')->name('add_product_care');
+Route::get('del_product_care/{cus_id}/{pro_id}','App\Http\Controllers\CustomerDetailController@del_product_care')->name('del_product_care');
+
+
+Route::get('show_info_care/{id}','App\Http\Controllers\CustomerDetailController@show_info_care')->name('show_info_care');
+
+Route::post('add_info_follow','App\Http\Controllers\CustomerDetailController@add_info_follow')->name('add_info_follow');
+// invoice
+
+Route::get('invoice','App\Http\Controllers\invoiceController@invoice')->name('invoice');
+
+
+Route::get('create_order','App\Http\Controllers\invoiceController@create_order')->name('create_order');
+Route::post('create_order','App\Http\Controllers\invoiceController@create_order')->name('create_order');
+
+Route::get('self_profile','App\Http\Controllers\employeeController@show')->name('self_profile');
+Route::post('self_profile','App\Http\Controllers\employeeController@show')->name('self_profile');
+
+
+Route::get('check_payroll','App\Http\Controllers\employeeController@check_payroll')->name('check_payroll');
+Route::post('check_payroll','App\Http\Controllers\employeeController@check_payroll')->name('check_payroll');
+
