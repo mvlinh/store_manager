@@ -11,12 +11,13 @@ class product extends Model
     
     protected $table = 'product';
     protected $quarded = [];
-    public $timestames = false;
+    public $timestames = true;
 
     protected $fillable = [
         'id', 
         'name',
         'price',
         'commission',
+        'created_at'
     ];
 }

@@ -1,5 +1,9 @@
 @extends('home')
 @section('content')
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <head>
     <style>
         * {
@@ -87,32 +91,35 @@
         }
     </style>
 </head>
-<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
-        <div class="card p-4">
-            <div class=" image d-flex flex-column justify-content-center align-items-center">
-                 <button class="btn btn-secondary"> <img src="https://pdp.edu.vn/wp-content/uploads/2021/06/hinh-anh-gai-xinh-de-thuong-nhat-1.jpg" height="100" width="100" /></button>
-                <div class="name mt-3" style="margin-top: 20px;">Name: {{$employee->name}}</div>
-                <div class="idd">Email: {{$employee->email}}</div>
-                <div class=" mt-3">Date of birth: {{$employee->DoB}}</div>
-                <div class=" mt-3">Position: {{$position->name}}</div>
-                
-                @if(!empty($_GET['pay']))
-                    <div style="color: red;">
-                    {{$_GET['start_at']}}  --  {{$_GET['end_at']}}: {{number_format($_GET['pay'], 0, '', ',')}} vnd
-                    </div>
-                @endif
-                <div class="d-flex flex-row justify-content-center align-items-center mt-3"><span class="">Customer: </span> <span class="number">{{count($customer)}} people</span>
-                </div>
-                <div class=" d-flex mt-2"> <button id ='payroll' class="btn1 btn-dark btn-danger">Payroll</button> </div>
+    <div class="row">
+							<div class="col-xl-12 col-md-12 col-lg-12">
+								<div class="card box-widget widget-user">
+									<div class="card-body text-center">
+										<div class="widget-user-image mx-auto text-center">
+											<img  class="avatar avatar-xxl brround rounded-circle" alt="img" src="{{asset('assets/images/users/'.Auth::user()->avatar.'.jpg')}}">
+										</div>
+										<div class="pro-user mt-3">
+											<h5 class="pro-user-username text-dark mb-1 fs-16">{{$employee->name}}</h5>
+											<h6 class="pro-user-desc text-muted fs-12">{{$employee->email}}</h6>
+										</div>
+                                        <div class=" mt-3">Date of birth: {{$employee->DoB}}</div>
+                                        <div class=" mt-3">Position: {{$position->name}}</div>
+								
+                                <div class="d-flex  flex-row justify-content-center align-items-center mt-12"><span class="">Customer: </span> <span class="number">{{count($customer)}} people</span>
+                           
+                            <!-- </div>     -->
+                                <div class=" d-flex mt-2"> <button id ='payroll' class="btn1 btn-dark btn-danger" style="height: 25px; width: 80px">Payroll</button> </div>
                <!-- form -->
+                <div>
 
+                </div>
                <form class="row g-3" method="post" action="{{route('check_payroll')}}" id = 'form' style="display: none;">
                     @csrf
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <label for="validationCustom01" class="form-label">Start</label>
                         <input type="date" style="width: 200px;" class="form-control" id="name" name = 'start' value="" required placeholder="dd/mm/yyyy">
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">End</label>
                         <input type="date" style="width: 200px;" class="form-control" id="name" name = 'end' value="" required placeholder="dd/mm/yyyy">
                     </div>
@@ -120,15 +127,44 @@
                         <button class="btn btn-primary" name="submit"  type="submit">Check</button>
                         <button class="btn btn-danger" name="reset"  type="reset">Reset</button>
                     </div>
-  
-</form>
-  
-            </div>
-        </div>
-    </div>
+
+                </form>
+                 </div>
+                                @if(!empty($_GET['start_at']))
+                                <div style="color: red;">
+                                {{$_GET['start_at']}}  --  {{$_GET['end_at']}}: {{number_format($_GET['pay'], 0, '', ',')}} vnd
+                                </div>
+                                @endif
+                                    <div class="d-flex align-items-end justify-content-between mg-b-5">
+											<h6 class="">This Week</h6>
+											<h6 class="font-weight-bold mb-1">02</h6>
+										</div>
+										<div class="progress progress-sm mb-5">
+											<div class="progress-bar bg-danger w-20"></div>
+										</div>
+										<div class="d-flex align-items-end justify-content-between mg-b-5">
+											<h6 class="">This Month</h6>
+											<h6 class="font-weight-bold mb-1">05</h6>
+										</div>
+										<div class="progress progress-sm mb-5">
+											<div class="progress-bar bg-info w-30"></div>
+										</div>
+										<div class="d-flex align-items-end justify-content-between mg-b-5">
+											<h6 class="">This Year</h6>
+											<h6 class="font-weight-bold mb-1">22</h6>
+										</div>
+										<div class="progress progress-sm mb-5">
+											<div class="progress-bar bg-warning w-50"></div>
+										</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+                </div>
     <script>
         $('#payroll').click(function(){
                 $("#form").toggle();
         })
     </script>
+    
 @endsection

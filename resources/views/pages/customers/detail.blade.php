@@ -1,18 +1,153 @@
 @extends('home')
 @section('content')
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
-   <div class="container">
-   Name: {{$detail['0']->customer_name}} <br>
-   Employees_care: {{$detail['0']->name}}<br>
-   Product Care :  
-   @foreach($detail_product_care as $pro)
-        {{$pro->product_name}},
-   @endforeach
-        <span data-toggle="modal" data-target="#add" style="color: red;">
-            Thay đổi
-        </span>
 
+                        <div class="row">
+							<div class="col-md-12 col-lg-12">
+								<div class="card">
+									<div class="card-header border-bottom-0">
+										<h3 class="card-title">Thông tin khách hàng</h3>
+									</div>
+									<div class="table-responsive">
+										<table class="table card-table table-vcenter text-nowrap table-warning mb-0">
+											<thead  class="bg-warning text-white">
+												<tr>
+													<th>ID</th>
+													<th>Name</th>
+													<th>Employees_care</th>
+													<th>phone</th>
+													<th>address</th>
+													<th>email</th>
+													<th>status</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row">{{$detail['0']->id}}</th>
+													<td>{{$detail['0']->customer_name}}</td>
+													<td>{{$detail['0']->name}}</td>
+													<td>{{$detail['0']->phonecus}}</td>
+													<td>{{$detail['0']->address}}</td>
+													<td>{{$detail['0']->email}}</td>
+                                                    @if($detail['0']->status == 1)
+														<td><span class="badge badge-success" style="padding: 5px 26px ; background-color: #0dcd94;">Active</span></td>
+														@elseif($detail['0']->status == 2)
+														<td><span class="badge badge-warning" style="padding: 6px 10px ; background-color: #fbc518;">transferring</span></td>
+														@else
+														<td><span class="badge badge-danger" style="padding: 5px 28px; background-color: #f7284a;">block</span></td>
+														@endif
+												</tr>
+                                                
+											</tbody>
+										</table>
+									</div>
+									<!-- table-responsive -->
+								</div>
+							</div>
+						</div>
+
+                        <div class="row">
+							<div class="col-md-12 col-lg-12">
+								<div class="card">
+									<div class="card-header border-bottom-0">
+										<h3 class="card-title">Danh mục sản phẩm quan tâm</h3>
+									</div>
+									<div class="table-responsive">
+										<table class="table card-table table-vcenter text-nowrap table-warning mb-0">
+											<thead  class="bg-warning text-white">
+												<tr>
+													<th>ID</th>
+													<th>Name</th>
+													<th>price</th>
+												</tr>
+											</thead>
+                                            <tbody>
+                                            @foreach($detail_product_care as $pro)
+                                            
+												<tr>
+													<th scope="row">{{$pro->product_id}}</th>
+													<td>{{$pro->product_name}}</td>
+													<td>{{number_format( $pro->price)}} vnd</td>
+												</tr>
+                                                @endforeach  
+											</tbody>
+											
+										</table>
+									</div>
+									<!-- table-responsive -->
+								</div>
+							</div>
+						</div>
+                        <button data-toggle="modal" data-target="#add" style="color: red; margin-bottom: 10px;">
+                            Thêm Xóa sản phẩm quan tâm
+                        </button>
+       
+                        <div class="row">
+							<div class="col-md-12 col-lg-12">
+								<div class="card">
+									<div class="card-header border-bottom-0">
+										<h3 class="card-title">Sản phẩm đã mua</h3>
+									</div>
+									<div class="table-responsive">
+										<table class="table card-table table-vcenter text-nowrap table-warning mb-0">
+											<thead  class="bg-warning text-white">
+												<tr>
+													<th>ID</th>
+													<th>Name</th>
+												</tr>
+											</thead>
+											<tbody>
+                                                @if(count( $sold )== 0)
+                                                <tr>
+													
+													<td>Chưa có sản phẩm nào được mua</td>
+												</tr>
+                                                @else
+                                                  @foreach($sold as $pro)
+                                                    
+                                                    <tr>
+                                                        <th scope="row">{{$pro->id}}</th>
+                                                        <td>{{$pro->name}}</td>
+                                                    </tr>
+                                                    @endforeach  
+                                                 @endif
+											</tbody>
+										</table>
+									</div>
+									<!-- table-responsive -->
+								</div>
+							</div>
+						</div>
+                        <div class="row">
+							<div class="col-md-12 col-lg-12">
+								<div class="card">
+									<div class="card-header border-bottom-0">
+										<h3 class="card-title">Thông tin chăm sóc khách hàng: <button id="care_info">Chi tiết</button></h3>
+									</div>
+									<div class="table-responsive">
+										<table class="table_info table card-table table-vcenter text-nowrap table-warning mb-0">
+											<thead  class="bg-warning text-white">
+												<tr>
+													<th>Employee</th>
+													<th>Phone</th>
+													<th>Comment</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													
+												</tr>
+                                                
+											</tbody>
+										</table>
+									</div>
+									<!-- table-responsive -->
+								</div>
+							</div>
+						</div>
   <!-- The Modal -->
         <div class="modal" id="add">
             <div class="modal-dialog">
@@ -31,13 +166,13 @@
                         @endif -->
                             <div class="row">
                                 <div class="col-md-4">{{$pro->name}}</div>
-                                <div class="col-md-4 ms-auto"><a href="{{route('add_product_care',['cus_id'=>$id,'pro_id'=>$pro->id])}}"> <span style="color: blue;">Add</span> </a></div>
+                                <div class="col-md-4 ms-auto"><a href="{{route('add_product_care',['cus_id'=>$id,'pro_id'=>$pro->id])}}"> <i class="ti-plus"></i> </a></div>
                             </div>
                     @endforeach
                     @foreach($product_care as $pro)
                             <div class="row">
                                 <div class="col-md-4">{{$pro->name}}</div>
-                                <div class="col-md-4 ms-auto"><a href="{{route('del_product_care',['cus_id'=>$id,'pro_id'=>$pro->id])}}"><span style="color: red;">Del  </span> </a></div>
+                                <div class="col-md-4 ms-auto"><a href="{{route('del_product_care',['cus_id'=>$id,'pro_id'=>$pro->id])}}"><i class="ti-minus"></i> </a></div>
                             </div>
                     @endforeach
             
@@ -51,21 +186,8 @@
                 </div>
             </div>
         </div>
+        
         <div>
-            <span>Product sold: </span>
-            @foreach($sold as $item)
-                {{$item->name}}
-            @endforeach
-        </div>
-        <div>
-            Thông tin chăm sóc khách hàng: <button id="care_info">Chi tiết</button>
-
-            <table class="table_info" border="1">
-                <thead>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
             <span class="table_info" id="add_info" data-toggle="modal" data-target="#add_info_follow"></span>
         </div>
 
@@ -120,12 +242,12 @@
                     data : {
                     },
                     success : function(result){
-                       
-                            $('.table_info thead').html('<tr><th> Employees_id </th> <th>messes </th> </tr>');
+                        console.log(result);
+                            $('.table_info thead').html('<tr><th> Employees </th> <th>Phone </th> <th>Comment </th></tr>');
                             $('.table_info tbody').html('');
                             length = result.length;
                             for(let i = 0; i < length; i++){
-                                $('.table_info tbody').append('<tr><td>'+result[i].emp_id+'</td><td>'+result[i].care_info+'</tr>');
+                                $('.table_info tbody').append('<tr><td>'+result[i].name+'</td><td>'+result[i].phone+'</td><td>'+result[i].care_info+'</tr>');
                             }
                             $('#add_info').html('<button> Add </button>');
                             $('.table_info').show();
@@ -149,7 +271,7 @@
                     },
                     success : function(result){
                         console.log(result);
-                        $('.table_info tbody').append('<tr><td>'+result.emp_id+'</td><td>'+result.info+'</tr>');
+                        $('.table_info tbody').append('<tr><td>'+result.name+'</td><td>'+result.phone+'</td><td>'+result.info+'</td></tr>');
                     },
                         error : function(){
                             console.log('error');

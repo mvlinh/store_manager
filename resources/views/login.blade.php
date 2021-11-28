@@ -7,7 +7,7 @@
 			<div class="col-md-6 col-md-push-3">
             <form action="{{route('home')}}" method="POST">
                 @csrf
-						<legend>Đăng nhập hệ thống</legend>
+						<legend>Đăng Nhập</legend>
 						
 						<div class="form-group">
 							<label for="">Username</label>

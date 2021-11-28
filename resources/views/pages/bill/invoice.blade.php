@@ -1,6 +1,13 @@
 @extends('home')
 @section('content')
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <!-- invoice -->
+        @if(!empty($_GET['success']))
+          {{$_POST['phone']}}
+        @else
+          
 <div class="row g-3">
   <div class="col-md-12 ">
     <form class="row" action="{{route('create_order')}}" method="POST">
@@ -35,7 +42,7 @@
                     @foreach (old('products', ['']) as $index => $oldProduct)
                         <tr id="product{{ $index }}">
                             <td>
-                                <select name="products[]" class="form-control">
+                                <select name="products[]" class="form-control" style="height: 34px;">
                                     <option value="">-- choose product --</option>
                                     @foreach ($products as $product)
                                         <option value="{{ $product->id }}"{{ $oldProduct == $product->id ? ' selected' : '' }}>
@@ -64,12 +71,12 @@
         
       </div>
       <div class="col-md-12" style="margin-top: 20px;">
+        <button class="btn btn-danger" id="btn-submit" type="reset">reset form</button>
         <button class="btn btn-primary" id="btn-submit" type="submit">Submit form</button>
         </div>
     </form>
   </div>
 </div>
-
 <script>
   $(document).ready(function(){
     let row_number = {{ count(old('products', [''])) }};
@@ -89,4 +96,5 @@
     });
   });
 </script>
+@endif
 @endsection

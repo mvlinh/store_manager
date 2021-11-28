@@ -14,6 +14,7 @@ class bill extends Model
         'emp_care_id',
         'emp_seller_id',
         'customer_id',
+        'created_at'
     ];
    
 }

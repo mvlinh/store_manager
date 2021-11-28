@@ -1,42 +1,56 @@
-
 <!DOCTYPE html>
-<html lang="">
-@include ('layout.head')
-	<body>
-		<div class="container-fuild" >
-			<div class="row">
+<html lang="en" dir="ltr">
+	
+<!-- Mirrored from laravel.spruko.com/dayone/ltr/index by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Nov 2021 03:05:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+@include('layout.head')
+
+	<body class="app sidebar-mini" id="index1">
+
+        <!-- Switcher -->
+		
+		<!-- End Switcher -->
+
+		<!---Global-loader-->
+		<!-- <div id="global-loader" >
+			<img src="assets/images/svgs/loader.svg" alt="loader">
+		</div> -->
+
+		<div class="page">
+			<div class="page-main">
+
+                <!--aside open-->
+				@include('layout.slide')
+				<!--aside closed-->
+
+				<div class="app-content main-content">
+					<div class="side-app">
+
+                        <!--app header-->
 					@include('layout.nav')
-				</div>
-				<!-- Start Banner website -->
-				<div class="row">
-					<div class="col-md-12">
-						<!-- <img src="https://tapchisieuxe.com/wp-content/uploads/2020/10/van-hoa-do-sieu-xe-o-nhat-ban-doc-dao-va-dien-ro-so-mot-the-gioi-0-1.jpg" alt="showroom" class="responsive" style="width: 100%; height: 300px" /> -->
-					</div>
-			</div>
-			@yield('customer_detail')
-			<!-- End banner website -->
-
-			<!-- Start main -->
-			<div class="row main_member">
-				
-            @include ('layout.slide')
+						<!--/app header-->
+						<!--Page header-->
 					
-					<div class="col-md-9 col-sm-9 col-xs-12">
-                                @yield('content')
-                                
+						<!--End Page header-->
+						<!--Row-->
+						@yield('content')
 					</div>
-				</div>
+				</div><!-- end app-content-->
 			</div>
-			
 
+            <!--Footer-->
+			@include('layout.footer')
+			<!-- End Footer-->
 		</div>
-        <div class="container-fluid">
-        <div class="row footer">
-				<div class="col-md-12 text-center">
-					Hệ thống học viên IT Plus <br>
-					Copyright © 2011 All Rights Reserved. Phát triển bởi ITPlus Academy
-				</div>
-			</div>
-        </div>
+
+        <!-- Back to top -->
+		<a href="#top" id="back-to-top"><span class="feather feather-chevrons-up"></span></a>
+
+		
 	</body>
+
+<!-- Mirrored from laravel.spruko.com/dayone/ltr/index by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Nov 2021 03:05:43 GMT -->
 </html>
+;
+
+

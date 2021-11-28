@@ -27,7 +27,7 @@ class invoiceController extends Controller
         // $bill = new bill;
     }
     function create_order(Request $request){
-        $customer = DB::table('customer',)
+        $customer = DB::table('customer')
                         ->where('phone',$request['phone'])
                         ->first();
         if($request['products']['0'] == 0){
@@ -52,9 +52,18 @@ class invoiceController extends Controller
                 $detailed_bill->quantity = $request['quantities'][$i];
                 $detailed_bill->created_at =  Carbon::now();
                 $detailed_bill->save();
+                $product[$i] = $customer = DB::table('product',)
+                                ->where('id',$request['products'][$i])
+                                ->get();
+                $product[$i]['quantity'] = $request['quantities'][$i];
             }
-           
-            return redirect()->route('invoice',['mess'=>'successfully']);
+                $bill['pro'] = $request['products'];
+                $bill['customer'] =  DB::table('customer')
+                                    ->where('phone',$request['phone'])
+                                    ->first();
+                $bill['i']  = $i;
+                $bill['bill'] = DB::table('bill')->orderBy('id', 'desc')->first();
+            return view('pages.bill.print',$bill,['product'=>$product]);
         }
     }
 }
