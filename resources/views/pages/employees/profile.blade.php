@@ -1,7 +1,6 @@
 @extends('home')
 @section('content')
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <head>
@@ -91,7 +90,7 @@
         }
     </style>
 </head>
-    <div class="row">
+                        <div class="row">
 							<div class="col-xl-12 col-md-12 col-lg-12">
 								<div class="card box-widget widget-user">
 									<div class="card-body text-center">
@@ -102,39 +101,39 @@
 											<h5 class="pro-user-username text-dark mb-1 fs-16">{{$employee->name}}</h5>
 											<h6 class="pro-user-desc text-muted fs-12">{{$employee->email}}</h6>
 										</div>
-                                        <div class=" mt-3">Date of birth: {{$employee->DoB}}</div>
-                                        <div class=" mt-3">Position: {{$position->name}}</div>
+                                        <div class=" mt-3">Ngày sinh: {{$employee->DoB}}</div>
+                                        <div class=" mt-3">Quản lí: {{$position->name}}</div>
 								
-                                <div class="d-flex  flex-row justify-content-center align-items-center mt-12"><span class="">Customer: </span> <span class="number">{{count($customer)}} people</span>
-                           
-                            <!-- </div>     -->
-                                <div class=" d-flex mt-2"> <button id ='payroll' class="btn1 btn-dark btn-danger" style="height: 25px; width: 80px">Payroll</button> </div>
-               <!-- form -->
-                <div>
+                                <div class="d-flex  flex-row justify-content-center align-items-center mt-12"><span class="">Số lượng khách đang chăm sóc: </span> <span class="number" style="font-size: 12px;">{{count($customer)}} Người</span>
+                                
+                            </div>
+                            <H4 style="color: red;">Tính lương</H4>
+                         <div>
+                         </div>
+                         <form class="row g-3" method="post" action="{{route('check_payroll')}}" id = 'form' style=" margin:0 200px;">
+                            @csrf
+                            <div class="col-md-4">
+                                <input type="date" style="width: 200px;" class="form-control" id="name" name = 'start' value="" required placeholder="dd/mm/yyyy">
+                            </div>
+                            <div class="col-md-4">
+                                đến ngày
+                            </div>
+                            <div class="col-md-4">
+                                <input type="date" style="width: 200px;" class="form-control" id="name" name = 'end' value="" required placeholder="dd/mm/yyyy">
+                            </div>
+                            <div class="col-md-12" style="margin-top: 10px;">
+                                <button class="btn btn-primary" name="submit"  type="submit">Check</button>
+                                <button class="btn btn-danger" name="reset"  type="reset">Reset</button>
+                            </div>
 
-                </div>
-               <form class="row g-3" method="post" action="{{route('check_payroll')}}" id = 'form' style="display: none;">
-                    @csrf
-                    <div class="col-md-6">
-                        <label for="validationCustom01" class="form-label">Start</label>
-                        <input type="date" style="width: 200px;" class="form-control" id="name" name = 'start' value="" required placeholder="dd/mm/yyyy">
+                        </form>
                     </div>
-                    <div class="col-md-6">
-                    <label for="validationCustom01" class="form-label">End</label>
-                        <input type="date" style="width: 200px;" class="form-control" id="name" name = 'end' value="" required placeholder="dd/mm/yyyy">
-                    </div>
-                    <div class="col-md-12" style="margin-top: 10px;">
-                        <button class="btn btn-primary" name="submit"  type="submit">Check</button>
-                        <button class="btn btn-danger" name="reset"  type="reset">Reset</button>
-                    </div>
-
-                </form>
-                 </div>
                                 @if(!empty($_GET['start_at']))
                                 <div style="color: red;">
                                 {{$_GET['start_at']}}  --  {{$_GET['end_at']}}: {{number_format($_GET['pay'], 0, '', ',')}} vnd
                                 </div>
                                 @endif
+                                
                                     <div class="d-flex align-items-end justify-content-between mg-b-5">
 											<h6 class="">This Week</h6>
 											<h6 class="font-weight-bold mb-1">02</h6>
@@ -161,6 +160,8 @@
 						</div>
                     </div>
                 </div>
+
+                
     <script>
         $('#payroll').click(function(){
                 $("#form").toggle();

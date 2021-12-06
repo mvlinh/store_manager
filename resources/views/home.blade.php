@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-	
-<!-- Mirrored from laravel.spruko.com/dayone/ltr/index by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Nov 2021 03:05:42 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 @include('layout.head')
 
 	<body class="app sidebar-mini" id="index1">

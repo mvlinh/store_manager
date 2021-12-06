@@ -1,5 +1,8 @@
 @extends('home')
 @section('content')
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div class="row">
 							<div class="col-md-12 col-lg-12">
 								<div class="card">
@@ -32,7 +35,7 @@
                           <td>{{$employee->email}}</td>
                           <td>{{$employee->address}}</td>
                           <td>{{$employee->position_name}}</td>
-                          <td><a href="{{route('transfer_customer_toEmployee',['id'=>$customer->id,'employee_id'=>$employee->id])}}"><i class="si si-logout"></i></a></td>
+                          <td><a href="{{route('transfer_customer_toEmployee',['id'=>$customer->id,'employee_id'=>$employee->id])}}"><button class="btn btn-primary fe fe-truck"> Chuyển đến</button></a></td>
                         </tr>
                         @endforeach
                       </tbody>

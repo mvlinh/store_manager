@@ -15,7 +15,7 @@
 									<div class="emp-award" data-toggle="tooltip" data-placement="top" title="Best Employee Of The Year"><i class="fa fa-trophy"></i></div>
 								</div>
 								<div class="user-info">
-									<h5 class=" mb-2">Max Poole</h5>
+									<h5 class=" mb-2">{{Auth::user()->name}}</h5>
 									<span class="text-muted app-sidebar__user-name text-sm">Employee</span>
 								</div>
 							</div>

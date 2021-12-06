@@ -183,7 +183,7 @@
 													<i class="feather feather-edit-2 mr-3 fs-16 my-auto"></i>
 													<div class="mt-1">Change Password</div>
 												</a>
-												<a class="dropdown-item d-flex" href="#">
+												<a class="dropdown-item d-flex" a href="{{route('logout')}}">
 													<i class="feather feather-power mr-3 fs-16 my-auto"></i>
 													<div class="mt-1">Sign Out</div>
 												</a>

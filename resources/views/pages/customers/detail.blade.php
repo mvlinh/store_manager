@@ -13,25 +13,34 @@
 									</div>
 									<div class="table-responsive">
 										<table class="table card-table table-vcenter text-nowrap table-warning mb-0">
-											<thead  class="bg-warning text-white">
-												<tr>
-													<th>ID</th>
-													<th>Name</th>
-													<th>Employees_care</th>
-													<th>phone</th>
-													<th>address</th>
-													<th>email</th>
-													<th>status</th>
-												</tr>
-											</thead>
+								
 											<tbody>
-												<tr>
-													<th scope="row">{{$detail['0']->id}}</th>
-													<td>{{$detail['0']->customer_name}}</td>
-													<td>{{$detail['0']->name}}</td>
-													<td>{{$detail['0']->phonecus}}</td>
-													<td>{{$detail['0']->address}}</td>
-													<td>{{$detail['0']->email}}</td>
+                                                <tr>
+                                                    <th>ID: </th>
+                                                    <th scope="row">{{$detail['0']->id}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Tên: </th>
+                                                    <th scope="row">{{$detail['0']->customer_name}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Người chăm sóc: </th>
+                                                    <th scope="row">{{$detail['0']->customer_name}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Số điện thoại: </th>
+                                                    <th scope="row">{{$detail['0']->phonecus}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Địa chỉ: </th>
+                                                    <th scope="row">{{$detail['0']->address}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>email: </th>
+                                                    <th scope="row">{{$detail['0']->email}}</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Trạng Thái: </th>
                                                     @if($detail['0']->status == 1)
 														<td><span class="badge badge-success" style="padding: 5px 26px ; background-color: #0dcd94;">Active</span></td>
 														@elseif($detail['0']->status == 2)
@@ -39,7 +48,8 @@
 														@else
 														<td><span class="badge badge-danger" style="padding: 5px 28px; background-color: #f7284a;">block</span></td>
 														@endif
-												</tr>
+                                                </tr>
+												
                                                 
 											</tbody>
 										</table>
@@ -60,8 +70,8 @@
 											<thead  class="bg-warning text-white">
 												<tr>
 													<th>ID</th>
-													<th>Name</th>
-													<th>price</th>
+													<th>Tên sản phẩm</th>
+													<th>Giá sản phẩm</th>
 												</tr>
 											</thead>
                                             <tbody>
@@ -81,7 +91,7 @@
 								</div>
 							</div>
 						</div>
-                        <button data-toggle="modal" data-target="#add" style="color: red; margin-bottom: 10px;">
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#add" style="color: red; margin-bottom: 10px;">
                             Thêm Xóa sản phẩm quan tâm
                         </button>
        
@@ -96,7 +106,8 @@
 											<thead  class="bg-warning text-white">
 												<tr>
 													<th>ID</th>
-													<th>Name</th>
+													<th>Tên sản phẩm</th>
+													<th>Giá sản phẩm</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -111,6 +122,7 @@
                                                     <tr>
                                                         <th scope="row">{{$pro->id}}</th>
                                                         <td>{{$pro->name}}</td>
+                                                        <td>{{$pro->price}}</td>
                                                     </tr>
                                                     @endforeach  
                                                  @endif
@@ -125,15 +137,15 @@
 							<div class="col-md-12 col-lg-12">
 								<div class="card">
 									<div class="card-header border-bottom-0">
-										<h3 class="card-title">Thông tin chăm sóc khách hàng: <button id="care_info">Chi tiết</button></h3>
+										<h3 class="card-title">Thông tin chăm sóc khách hàng: <button class="btn btn-danger" id="care_info">Chi tiết</button></h3>
 									</div>
 									<div class="table-responsive">
 										<table class="table_info table card-table table-vcenter text-nowrap table-warning mb-0">
 											<thead  class="bg-warning text-white">
 												<tr>
-													<th>Employee</th>
-													<th>Phone</th>
-													<th>Comment</th>
+													<th>Người chăm sóc</th>
+													<th>email người chăm sóc</th>
+													<th>Nội dung chăm sóc</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -243,13 +255,13 @@
                     },
                     success : function(result){
                         console.log(result);
-                            $('.table_info thead').html('<tr><th> Employees </th> <th>Phone </th> <th>Comment </th></tr>');
+                            $('.table_info thead').html('<tr><th> Tên người chăm sóc </th> <th>Email người chăm sóc </th> <th>Nội dung chăm sóc </th></tr>');
                             $('.table_info tbody').html('');
                             length = result.length;
                             for(let i = 0; i < length; i++){
-                                $('.table_info tbody').append('<tr><td>'+result[i].name+'</td><td>'+result[i].phone+'</td><td>'+result[i].care_info+'</tr>');
+                                $('.table_info tbody').append('<tr><td>'+result[i].name+'</td><td>'+result[i].email+'</td><td>'+result[i].care_info+'</tr>');
                             }
-                            $('#add_info').html('<button> Add </button>');
+                            $('#add_info').html('<button class="btn btn-primary"> Add </button>');
                             $('.table_info').show();
                     },
                         error : function(){

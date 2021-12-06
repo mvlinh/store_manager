@@ -15,21 +15,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('login');
-})->middleware('preventBackHistory');
+});
+
 Route::get('register', function () {
     return view('register');
 })->name('register');
 Route::get('login', function () {
-    return view('dashboard');
-});
+    return view('login');
+})->name('login');
+
 
 Route::get('home', function () {
     return view('home');
 })->name('home')->middleware('loginRole');
 
-Route::get('dashboard','App\Http\Controllers\employeeController@dashboard')->name('dashboard');
+Route::get('dashboard','App\Http\Controllers\employeeController@dashboard')->name('dashboard')->middleware('loginRole');
 
-Route::post('home','App\Http\Controllers\UserController@login')->name('login');
+Route::post('home','App\Http\Controllers\UserController@login');
 Route::post('getInfo','App\Http\Controllers\UserController@register')->name('getInfo');
 Route::get('logout','App\Http\Controllers\UserController@logout')->name('logout');
 
@@ -48,7 +50,6 @@ Route::get('getDataCustomer','App\Http\Controllers\CustomerController@getDataCus
 // customer detail
 
 Route::get('customer_detail/{id}','App\Http\Controllers\CustomerDetailController@customer_detail')->name('customer_detail');
-
 Route::get('customer__detail','App\Http\Controllers\CustomerDetailController@customer__detail')->name('customer__detail');
 Route::get('add_product_care/{cus_id}/{pro_id}','App\Http\Controllers\CustomerDetailController@add_product_care')->name('add_product_care');
 Route::get('del_product_care/{cus_id}/{pro_id}','App\Http\Controllers\CustomerDetailController@del_product_care')->name('del_product_care');
@@ -68,8 +69,6 @@ Route::post('create_order','App\Http\Controllers\invoiceController@create_order'
 Route::get('self_profile','App\Http\Controllers\employeeController@show')->name('self_profile');
 Route::post('self_profile','App\Http\Controllers\employeeController@show')->name('self_profile');
 
-
-Route::get('check_payroll','App\Http\Controllers\employeeController@check_payroll')->name('check_payroll');
 Route::post('check_payroll','App\Http\Controllers\employeeController@check_payroll')->name('check_payroll');
 
 

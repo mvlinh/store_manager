@@ -1,10 +1,13 @@
 @extends('home')
 @section('content')
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div class="row">
 							<div class="col-md-12 col-lg-12">
 								<div class="card">
 									<div class="card-header border-bottom-0">
-										<h3 class="card-title">Khách hàng được chuyển đến</h3>
+										<h3 class="card-title">Khách hàng được chuyển đến </h3>
 									</div>
 									<div class="table-responsive">
 										<table class="table card-table table-vcenter text-nowrap table-warning mb-0">

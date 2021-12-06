@@ -44,7 +44,7 @@ class CustomerDetailController extends Controller
                             ->join('detailed_bill', 'bill_id', '=', 'bill.id')
                             ->join('product', 'product_id', '=', 'product.id')
                             ->where('bill.customer_id',$id)
-                            ->select('product.name as name','product.id as id')
+                            ->select('product.name as name','product.id as id','product.price as price')
                             ->get();
         return view('pages.customers.detail',$customer);
 

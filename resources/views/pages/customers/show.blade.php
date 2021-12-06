@@ -10,8 +10,8 @@
 										<div class="card">
 											<div class="card-body p-1 text-center">
 												<img src="assets/images/svgs/warning.svg" alt="img" class="w-7">
-												<h3 class="mt-1">Warning</h3>
-												<p class="mt-3 mb-1"> khách hàng đang trong quá trình chuyển chăm sóc</p>
+												<h3 class="mt-1">Cảnh báo</h3>
+												<p class="mt-3 mb-1">Khách hàng đang chuyển hoặc đã bị khóa</p>
 											</div>
 										</div>
 									</div>
@@ -21,8 +21,7 @@
 							<div class="card">
 								<div class="card-body p-1 text-center">
 									<img src="assets/images/svgs/check.svg" alt="img" class="w-7">
-									<h3 class="mt-1">Message Success</h3>
-									<p class="mt-3 mb-1"> Well Done!! You access this  page which is available.. </p>
+									<h3 class="mt-1">Thành công</h3>
 								</div>
 							</div>
 						</div>
@@ -75,7 +74,7 @@
 															<a class="btn btn-primary btn-icon btn-sm"  href="{{route('customer_detail',['id'=>$item->id])}}">
 																<i class="feather feather-edit" data-toggle="tooltip" data-original-title="View"></i>
 															</a>
-															<a href="{{route('transfer_customer',['id'=>$item->id])}}"><i class="si si-login"></a>
+															<a href="{{route('transfer_customer',['id'=>$item->id])}}"><button class="btn btn-danger  typcn typcn-plane-outline" style="font-size: 10px;">chuyển đi</button></a>
 														</td>
 													</tr>
                           @endforeach
