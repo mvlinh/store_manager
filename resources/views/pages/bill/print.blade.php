@@ -70,7 +70,7 @@
                                        <?php
                                        $count = 0;
                                         for($j = 0; $j< $i; $j++){
-                                            $count = $count + $product[$j][0]->price;
+                                            $count = $count + $product[$j][0]->price*$product[$j]['quantity'];
                                         }
                                        ?>
 									</div>

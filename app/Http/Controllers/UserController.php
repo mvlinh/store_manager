@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use app\User;
 use Section;
 use DB;
+use time;
 use Illuminate\Support\Facades\DB as FacadesDB;
 
 class UserController extends Controller
@@ -23,7 +24,6 @@ class UserController extends Controller
     }
     public function login(Request $request)
     {
-       
         $email['info'] = $request->user;
 
         $passw = ($request->passw) ;
@@ -31,7 +31,10 @@ class UserController extends Controller
         if(Auth::attempt(['email'=>$email,'password'=>$passw])){
             $email['info'] = $request->user;
             $email['name'] = DB::table('employees')->where('email', $request->user)->first()->name;
-            return view('home',$email);
+            if (auth()->user()->id == auth()->user()->position_id) {
+                return redirect('admin/');
+            }
+            return redirect()->route('dashboard');
         }   
         else {
             $email['mess'] = 'Tên đăng nhập hoặc mật khẩu không đúng';
@@ -40,18 +43,26 @@ class UserController extends Controller
     }
     public function register(Request $request)
     {
-
+        if($request->has('file_upload')){
+            $file = $request->file_upload;
+            $ext = $file->extension();
+            
+            $file_name = time().'-'.'avatar'.'.'.$ext;
+            $file->move(public_path('assets/images/users'),$file_name);
+        }   
         $email = $request->email;
         $passw = $request->passw;
         DB::table('employees')->insert([
             'name' => $request->name,
             'phone' => $request->phone,
-            // 'position_id' =>$request->position_id,
-            // 'DoB' => $request->DoB,
+            'position_id' => Auth::user()->id,
+            'DoB' => $request->DoB,
             'email' => $email,
+            'avatar' => $file_name,
+            'address' => $request->address,
             'password' => bcrypt($passw),
         ]);
-         return view('login');
+         return redirect()->route('addemployee',['noti'=>'successfully']);
     }
     public function logout(Request $request){
         Auth::logout();

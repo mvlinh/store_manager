@@ -16,7 +16,7 @@
 								</div>
 								<div class="user-info">
 									<h5 class=" mb-2">{{Auth::user()->name}}</h5>
-									<span class="text-muted app-sidebar__user-name text-sm">Employee</span>
+									<span class="text-muted app-sidebar__user-name text-sm">Manager</span>
 								</div>
 							</div>
 							<div class="d-flex justify-content-center text-center fs-18 mt-1 mb-3 align-items-end app-user-rating">
@@ -50,12 +50,12 @@
 						</div>
 						<ul class="side-menu">
 							
-									<li><a href="{{route('dashboard')}}" class="slide-item">Dashboard</a></li>
-									<li><a href="{{route('manager_customer')}}" class="slide-item">Khách Hàng đang chăm sóc</a></li>
-									<li><a href="{{route('addCustomer')}}" class="slide-item">Thêm khách hàng</a></li>
-									<li><a href="{{route('transfer_customer_receive')}}" class="slide-item">Nhận khách hàng mới</a></li>
-									<li><a href="{{route('self_profile')}}" class="slide-item">Profile </a></li>
-									<li><a href="{{route('invoice')}}" class="slide-item">Xuất hóa đơn</a></li>
+									<li><a href="{{route('admindashboard')}}" class="slide-item">Dashboard</a></li>
+									<li><a href="{{route('addemployee')}}" class="slide-item">Thêm nhân viên mới</a></li>
+									<li><a href="{{route('showemployee')}}" class="slide-item">quản lí nhân viên</a></li>
+									<li><a href="{{route('customertransferhistory')}}" class="slide-item">Lịch sử chuyển khách hàng</a></li>
+									<li><a href="" class="slide-item">Tính lương cho nhân viên</a></li>
+									<li><a href="" class="slide-item">Profile</a></li>
 						</ul>
 						<div class="Annoucement_card">
 							<div class="text-center">
@@ -72,4 +72,4 @@
 							</div>
 						</div>
 					</div>
-				</aside>
+</aside>

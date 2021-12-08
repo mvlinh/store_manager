@@ -1,5 +1,8 @@
 @extends('home')
 @section('content')
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <div class="col-md-6">
     <label for="validationDefault01" class="form-label">Phone number</label>
     <span id="notification"></span>

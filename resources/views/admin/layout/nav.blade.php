@@ -31,22 +31,22 @@
 										</a>
 										<div class="dropdown header-flags">
 											<a class="nav-link icon" data-toggle="dropdown">
-												<img src="assets/images/flags/flag-png/united-kingdom.png" class="h-24" alt="img">
+												<img src="{{asset('assets/images/flags/flag-png/united-kingdom.png')}}" class="h-24" alt="img">
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow animated">
-												<a href="#" class="dropdown-item d-flex "> <span class="avatar  mr-3 align-self-center bg-transparent"><img src="assets/images/flags/flag-png/india.png" alt="img" class="h-24"></span>
+												<a href="#" class="dropdown-item d-flex "> <span class="avatar  mr-3 align-self-center bg-transparent"><img src="{{asset('assets/images/flags/flag-png/india.png')}}" alt="img" class="h-24"></span>
 													<div class="d-flex"> <span class="my-auto">India</span> </div>
 												</a>
-												<a href="#" class="dropdown-item d-flex"> <span class="avatar  mr-3 align-self-center bg-transparent"><img src="assets/images/flags/flag-png/united-kingdom.png" alt="img" class="h-24"></span>
+												<a href="#" class="dropdown-item d-flex"> <span class="avatar  mr-3 align-self-center bg-transparent"><img src="{{asset('assets/images/flags/flag-png/united-kingdom.png')}}" alt="img" class="h-24"></span>
 													<div class="d-flex"> <span class="my-auto">UK</span> </div>
 												</a>
-												<a href="#" class="dropdown-item d-flex"> <span class="avatar mr-3 align-self-center bg-transparent"><img src="assets/images/flags/flag-png/italy.png" alt="img" class="h-24"></span>
+												<a href="#" class="dropdown-item d-flex"> <span class="avatar mr-3 align-self-center bg-transparent"><img src="{{asset('assets/images/flags/flag-png/italy.png')}}" alt="img" class="h-24"></span>
 													<div class="d-flex"> <span class="my-auto">Italy</span> </div>
 												</a>
-												<a href="#" class="dropdown-item d-flex"> <span class="avatar mr-3 align-self-center bg-transparent"><img src="assets/images/flags/flag-png/united-states-of-america.png" class="h-24" alt="img"></span>
+												<a href="#" class="dropdown-item d-flex"> <span class="avatar mr-3 align-self-center bg-transparent"><img src="{{asset('assets/images/flags/flag-png/united-states-of-america.png')}}" class="h-24" alt="img"></span>
 													<div class="d-flex"> <span class="my-auto">US</span> </div>
 												</a>
-												<a href="#" class="dropdown-item d-flex"> <span class="avatar  mr-3 align-self-center bg-transparent"><img src="assets/images/flags/flag-png/spain.png" alt="img" class="h-24"></span>
+												<a href="#" class="dropdown-item d-flex"> <span class="avatar  mr-3 align-self-center bg-transparent"><img src="{{asset('assets/images/flags/flag-png/spain.png')}}" alt="img" class="h-24"></span>
 													<div class="d-flex"> <span class="my-auto">Spain</span> </div>
 												</a>
 											</div>
@@ -99,7 +99,7 @@
 													<a class="dropdown-item border-bottom" href="#">
 														<div class="d-flex align-items-center">
 															<div class="">
-																<span class="avatar avatar-md brround align-self-center cover-image" data-image-src="{{asset('assets/images/users/'.Auth::user()->avatar)}}"></span>
+																<span class="avatar avatar-md brround align-self-center cover-image" data-image-src="assets/images/users/3.jpg"></span>
 															</div>
 															<div class="d-flex">
 																<div class="pl-3">
@@ -115,7 +115,7 @@
 													<a class="dropdown-item border-bottom" href="#">
 														<div class="d-flex align-items-center">
 															<div class="">
-																<span class="avatar avatar-md brround align-self-center cover-image" data-image-src="{{asset('assets/images/users/4.jpg')}}"></span>
+																<span class="avatar avatar-md brround align-self-center cover-image" data-image-src="assets/images/users/4.jpg"></span>
 															</div>
 															<div class="d-flex">
 																<div class="pl-3">
@@ -131,7 +131,7 @@
 													<a class="dropdown-item border-bottom" href="#">
 														<div class="d-flex align-items-center">
 															<div class="">
-																<span class="avatar avatar-md brround align-self-center cover-image" data-image-src="{{asset('assets/images/users/6.jpg')}}"></span>
+																<span class="avatar avatar-md brround align-self-center cover-image" data-image-src="assets/images/users/6.jpg"></span>
 															</div>
 															<div class="d-flex">
 																<div class="pl-3">
