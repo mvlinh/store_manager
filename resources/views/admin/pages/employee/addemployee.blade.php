@@ -67,8 +67,6 @@
                 </form>
             </div>
         </div>
-		
-		@include('admin.js.js')
     </div>
   </body>
 </html>

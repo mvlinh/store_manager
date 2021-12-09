@@ -32,7 +32,7 @@ class UserController extends Controller
             $email['info'] = $request->user;
             $email['name'] = DB::table('employees')->where('email', $request->user)->first()->name;
             if (auth()->user()->id == auth()->user()->position_id) {
-                return redirect('admin/');
+                return redirect('admin/dashboard');
             }
             return redirect()->route('dashboard');
         }   

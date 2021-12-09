@@ -3,8 +3,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
-
                         <div class="row">
 							<div class="col-md-12 col-lg-12">
 								<div class="card">
@@ -12,7 +10,7 @@
 										<h3 class="card-title">Thông tin khách hàng</h3>
 									</div>
 									<div class="table-responsive">
-										<table class="table card-table table-vcenter text-nowrap table-warning mb-0">
+										<table class="table card-table table-vcenter text-nowrap table-primary mb-0">
 								
 											<tbody>
                                                 <tr>
@@ -66,8 +64,8 @@
 										<h3 class="card-title">Danh mục sản phẩm quan tâm</h3>
 									</div>
 									<div class="table-responsive">
-										<table class="table card-table table-vcenter text-nowrap table-warning mb-0">
-											<thead  class="bg-warning text-white">
+										<table class="table card-table table-vcenter text-nowrap table-primary mb-0">
+											<thead  class="bg-success text-white">
 												<tr>
 													<th>ID</th>
 													<th>Tên sản phẩm</th>
@@ -75,14 +73,22 @@
 												</tr>
 											</thead>
                                             <tbody>
-                                            @foreach($detail_product_care as $pro)
-                                            
-												<tr>
-													<th scope="row">{{$pro->product_id}}</th>
-													<td>{{$pro->product_name}}</td>
-													<td>{{number_format( $pro->price)}} vnd</td>
-												</tr>
+                                            @if($detail_product_care != NULL)
+                                                @foreach($detail_product_care as $pro)
+                                                
+                                                    <tr>
+                                                        <th scope="row">{{$pro->product_id}}</th>
+                                                        <td>{{$pro->product_name}}</td>
+                                                        <td>{{number_format( $pro->price)}} vnd</td>
+												    </tr>
                                                 @endforeach  
+                                            @else
+                                                     <tr>
+                                                        <th scope="row">Chưa có sản phâm quan tâm</th>
+                                                       
+                                                        
+												    </tr>
+                                            @endif
 											</tbody>
 											
 										</table>
@@ -103,7 +109,7 @@
 									</div>
 									<div class="table-responsive">
 										<table class="table card-table table-vcenter text-nowrap table-warning mb-0">
-											<thead  class="bg-warning text-white">
+											<thead  class="bg-primary text-white">
 												<tr>
 													<th>ID</th>
 													<th>Tên sản phẩm</th>
@@ -137,21 +143,42 @@
 							<div class="col-md-12 col-lg-12">
 								<div class="card">
 									<div class="card-header border-bottom-0">
-										<h3 class="card-title">Thông tin chăm sóc khách hàng: <button class="btn btn-danger" id="care_info">Chi tiết</button></h3>
+										<h3 class="card-title">Thông tin chăm sóc khách hàng:<span class="table_info" id="add_info" data-toggle="modal" data-target="#add_info_follow"><button class="btn btn-primary"> Add </button></span></h3>
 									</div>
-									<div class="table-responsive">
-										<table class="table_info table card-table table-vcenter text-nowrap table-warning mb-0">
-											<thead  class="bg-warning text-white">
+									<div class="table-responsive" >
+										<table id="comment_table" class="table_info table card-table table-vcenter text-nowrap table-primary mb-0">
+											<thead  class="bg-info text-white">
 												<tr>
 													<th>Người chăm sóc</th>
 													<th>email người chăm sóc</th>
+													<th>Số điện thoại</th>
 													<th>Nội dung chăm sóc</th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													
-												</tr>
+                                                @if($comment != NULL)
+                                                    @foreach($comment as $item)
+                                                    <tr>
+                                                        <td>{{$item->name}}
+                                                            
+                                                        </td>
+                                                        <td>{{$item->email}}
+                                                            
+                                                        </td>
+                                                        <td>{{$item->phone}}
+                                                            
+                                                        </td>
+                                                        <td>{{$item->care_info}}
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                @else
+                                                     <tr>
+                                                        <td>Chưa có chăm sóc nào</td>
+                                                    </tr>
+                                                @endif
+												
                                                 
 											</tbody>
 										</table>
@@ -200,7 +227,7 @@
         </div>
         
         <div>
-            <span class="table_info" id="add_info" data-toggle="modal" data-target="#add_info_follow"></span>
+            
         </div>
 
         <div class="modal" id="add_info_follow">
@@ -229,46 +256,21 @@
             </div>
         </div>
 </div>
- <!-- Optional JavaScript; choose one of the two! -->
 
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#comment_table').DataTable();
+});
+</script>
  <script>
       $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
- 
-       $('#care_info').click(function(){
-           $id = {{$detail['0']->id}};
-            $.ajax({
-                    url : "{{route('show_info_care',['id'=>"$id"])}}",
-                    type : 'get',
-                    data : {
-                    },
-                    success : function(result){
-                        console.log(result);
-                            $('.table_info thead').html('<tr><th> Tên người chăm sóc </th> <th>Email người chăm sóc </th> <th>Nội dung chăm sóc </th></tr>');
-                            $('.table_info tbody').html('');
-                            length = result.length;
-                            for(let i = 0; i < length; i++){
-                                $('.table_info tbody').append('<tr><td>'+result[i].name+'</td><td>'+result[i].email+'</td><td>'+result[i].care_info+'</tr>');
-                            }
-                            $('#add_info').html('<button class="btn btn-primary"> Add </button>');
-                            $('.table_info').show();
-                    },
-                        error : function(){
-                            console.log('error');
-                        }
-                })
-       });
 
     //    add info_care
 
@@ -283,7 +285,7 @@
                     },
                     success : function(result){
                         console.log(result);
-                        $('.table_info tbody').append('<tr><td>'+result.name+'</td><td>'+result.phone+'</td><td>'+result.info+'</td></tr>');
+                        $('.table_info tbody').prepend('<tr><td>'+result.name+'</td><td>'+result.phone+'</td><td>'+result.phone+'</td><td>'+result.info+'</td></tr>');
                     },
                         error : function(){
                             console.log('error');
@@ -292,5 +294,4 @@
        })
        
    </script>
-   @include('js.js')
 @endsection

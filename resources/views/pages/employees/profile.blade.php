@@ -95,7 +95,7 @@
 								<div class="card box-widget widget-user">
 									<div class="card-body text-center">
 										<div class="widget-user-image mx-auto text-center">
-											<img  class="avatar avatar-xxl brround rounded-circle" alt="img" src="{{asset('assets/images/users/'.Auth::user()->avatar.'.jpg')}}">
+											<img  class="avatar avatar-xxl brround rounded-circle" alt="img" src="{{asset('assets/images/users/'.Auth::user()->avatar)}}">
 										</div>
 										<div class="pro-user mt-3">
 											<h5 class="pro-user-username text-dark mb-1 fs-16">{{$employee->name}}</h5>

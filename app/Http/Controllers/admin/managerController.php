@@ -46,4 +46,24 @@ class managerController extends Controller
         $info['employee'] = DB::table('employees')->get();
         return view('admin.pages.employee.show',$info);
     }
+    public function lockemployee(Request $request){
+        $status = DB::table('employees')
+                ->where('id', $request->id)
+                ->select('status')->first();
+        $info['id']= $request->id;
+        if($status->status == 1){
+            $info['status'] = 0;
+        $affected = DB::table('employees')
+                    ->where('id', $request->id)
+                    ->update(['status' => 0]);
+        }
+        else{
+            $info['status'] = 1;
+        $affected = DB::table('employees')
+                        ->where('id', $request->id)
+                        ->update(['status' => 1]);
+        }
+       
+        return response()->json($info);
+    }
 }

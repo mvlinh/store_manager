@@ -3,10 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-<script src="assets/plugins/datatable/js/dataTables.bootstrap4.js"></script>
-<script src="assets/plugins/datatable/dataTables.responsive.min.js"></script>
-<script src="assets/plugins/datatable/responsive.bootstrap4.min.js"></script>
+<script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatable/dataTables.responsive.min.js')}}"></script>
 
 <div class="row">
 							<div class="col-xl-12 col-md-12 col-lg-12">
@@ -27,32 +25,47 @@
 														<th class="border-bottom-0">Ngày sinh</th>
 														<th class="border-bottom-0">Địa chỉ</th>
 														<th class="border-bottom-0">Email</th>
+														<th class="border-bottom-0">Status</th>
+														<th class="border-bottom-0">Action</th>
 													</tr>
 												</thead>
 												<tbody>
+													@php $i  = 1 @endphp
+													@foreach($employee as $item)
 													<tr>
-														<td>01</td>
+														<td>{{$i++}}</td>
 														<td>
 															<div class="d-flex">
-																<span class="avatar avatar-md brround mr-3" style="background-image: url(assets/images/users/1.jpg)"></span>
+																<span class="avatar avatar-md brround mr-3" style="background-image: url({{asset('assets/images/users/'.$item->avatar)}})"></span>
 																<div class="mr-3 mt-0 mt-sm-1 d-block">
-																	<h6 class="mb-1 fs-14">Faith Harris</h6>
-																	<p class="text-muted mb-0 fs-12">faith@gmail.com</p>
+																	<h6 class="mb-1 fs-14">{{$item->name}}</h6>
 																</div>
 															</div>
 														</td>
-														<td>#2987</td>
-														<td>Designing Department</td>
-														<td>Web Designer</td>
-														<td>+9685321475</td>
-														<td><span class="badge badge-success">Active</span></td>
+														<td>#{{$item->id}}</td>
+														<td>{{$item->position_id}}</td>
+														<td>{{$item->phone}}</td>
+														<td>{{$item->DoB}}</td>
+														<td>{{$item->address}}</td>
+														<td>{{$item->email}}</td>
+														@if($item->status == 1)
+														<td><span class="badge badge-success" style="padding: 5px 26px ;">Active</span></td>
+														@else
+														<td><span class="badge badge-danger" style="padding: 5px 28px ;">block</span></td>
+														@endif
 														<td>
-															<a class="btn btn-primary btn-icon btn-sm"  href="hr-empview.html">
+															<meta name="csrf-token" content="{{ csrf_token() }}">
+															<button class="btn btn-primary btn-icon btn-sm"  href="">
 																<i class="feather feather-edit" data-toggle="tooltip" data-original-title="View/Edit"></i>
-															</a>
-															<a class="btn btn-danger btn-icon btn-sm" data-toggle="tooltip" data-original-title="Delete"><i class="feather feather-trash-2"></i></a>
+															</button>
+															@if($item->status == 1)
+															<button class="btn btn-danger btn-icon btn-sm lock" id="{{$item->id}}" data-toggle="tooltip" onClick="reply_click(this.id)" >Khóa<i class="typcn typcn-lock-closed"></i></button>
+															@else
+															<button class="btn badge badge-warning-light btn-icon btn-sm lock" id="{{$item->id}}" data-toggle="tooltip" onClick="reply_click(this.id)">Mở<i class="typcn typcn-lock-open"></i></button>
+															@endif
 														</td>
 													</tr>
+													@endforeach
 												</tbody>
 											</table>
 										</div>
@@ -65,5 +78,36 @@
 			$('#hr-attendance').DataTable();
 		} );
 	</script>
-@include('js.js')
+	
+	<script>
+		$(document).ready(function(){
+		$("p").click(function(){
+			$(this).hide();
+		});
+		});
+</script>
+<script type="text/javascript">
+	 $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+  function reply_click(clicked_id)
+  {
+            $.ajax({
+                url : "{{route('lockemployee')}}",
+                type : 'post',
+                data : {        id: clicked_id
+                },
+
+                success : function(result){
+					location.reload();
+				},
+                error : function(){
+                    console.log('error');
+                }
+            })
+  }
+</script>
+
 @endsection

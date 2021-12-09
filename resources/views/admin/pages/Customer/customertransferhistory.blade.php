@@ -88,5 +88,4 @@
 			$('#hr-attendance').DataTable();
 		} );
 	</script>
-	@include('admin.js.js')
 @endsection

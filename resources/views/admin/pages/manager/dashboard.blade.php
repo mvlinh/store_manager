@@ -1,5 +1,6 @@
 @extends('admin.home')
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="side-app">
                         <!--app header-->
 					
@@ -235,22 +236,18 @@
 							</div>
 						</div>
 </div>
-	<!--Moment js-->
-	<script src="assets/plugins/moment/moment.js"></script>
 
-	<!-- Jquery js-->
-	<script src="assets/plugins/jquery/jquery.min.js"></script>
+<!-- INTERNAL Chartjs rounded-barchart -->
+<script src="assets/plugins/chart.min/chart.min.js"></script>
+<script src="assets/plugins/chart.min/rounded-barchart.js"></script>
+<!-- INTERNAL Pg-calendar-master js -->
+<script src="assets/plugins/pg-calendar-master/pignose.calendar.full.min.js"></script>
 
-	<!-- INTERNAL Chartjs rounded-barchart -->
-	<script src="assets/plugins/chart.min/chart.min.js"></script>
-	<script src="assets/plugins/chart.min/rounded-barchart.js"></script>
+<!-- INTERNAL jQuery-countdowntimer js -->
+<script src="assets/plugins/jQuery-countdowntimer/jQuery.countdownTimer.js"></script>
 
-	<!-- INTERNAL Pg-calendar-master js -->
-	<script src="assets/plugins/pg-calendar-master/pignose.calendar.full.min.js"></script>
-
-	<!-- INTERNAL Index js-->
-	<script src="assets/js/index2.js"></script>
-	<script src="assets/js/employee/emp-sidemenuchart.js"></script>
-
+<!-- INTERNAL Index js-->
+<script src="assets/js/index2.js"></script>
+<script src="assets/js/employee/emp-sidemenuchart.js"></script>
 
 @endsection

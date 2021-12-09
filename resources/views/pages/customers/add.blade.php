@@ -68,14 +68,14 @@
 <div>
 </div>
 
-  <div class="row">
+  <div class="row" >
 							<div class="col-xl-12 col-md-12 col-lg-12">
 								<div class="card">
 									<div class="card-header  border-0">
 									</div>
 									<div class="card-body">
 										<div class="table-responsive">
-											<table id="customerTable" class=" table  table-vcenter text-nowrap table-bordered border-bottom" id="hr-table">
+											<table id="customerTable"  class=" table  table-vcenter text-nowrap table-bordered border-bottom" id="hr-table">
 												<thead>
 													<tr>
 														<th class="border-bottom-0 w-5">No</th>
@@ -87,7 +87,7 @@
 														<th class="border-bottom-0">Actions</th>
 													</tr>
 												</thead>
-												<tbody>
+												<tbody style="display: none;">
                           <?php $i = 1 ?>
                           @foreach($customer as $item)
 													<tr>
@@ -124,9 +124,6 @@
 								</div>
 							</div>
 						</div>
-<div id = "nextpage">
-{{ $customer->links() }}
-</div>
 <script>
         $.ajaxSetup({
             headers: {
@@ -136,6 +133,8 @@
  
         $('#validationDefault01').on('keyup change', function() {
             let phone = this.value;
+            if(phone.length > 6){
+              $('tbody').show();
             $.ajax({
                 url : "{{route('getDataCustomer')}}",
                 type : 'post',
@@ -182,6 +181,8 @@
                     console.log('error');
                 }
             })
+          }else 
+              $('tbody').hide();
         });
 
     
