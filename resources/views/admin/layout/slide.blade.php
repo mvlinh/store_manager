@@ -54,8 +54,7 @@
 									<li><a href="{{route('addemployee')}}" class="slide-item">Thêm nhân viên mới</a></li>
 									<li><a href="{{route('showemployee')}}" class="slide-item">quản lí nhân viên</a></li>
 									<li><a href="{{route('customertransferhistory')}}" class="slide-item">Lịch sử chuyển khách hàng</a></li>
-									<li><a href="" class="slide-item">Tính lương cho nhân viên</a></li>
-									<li><a href="" class="slide-item">Profile</a></li>
+									<li><a href="{{route('employeesalary')}}" class="slide-item">Tính lương cho nhân viên</a></li>
 						</ul>
 						<div class="Annoucement_card">
 							<div class="text-center">

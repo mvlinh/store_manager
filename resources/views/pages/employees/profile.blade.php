@@ -2,7 +2,6 @@
 @section('content')
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <head>
     <style>
         * {
@@ -136,24 +135,24 @@
                                 
                                     <div class="d-flex align-items-end justify-content-between mg-b-5">
 											<h6 class="">This Week</h6>
-											<h6 class="font-weight-bold mb-1">02</h6>
+											<h6 class="font-weight-bold mb-1">{{$week}}</h6>
 										</div>
 										<div class="progress progress-sm mb-5">
-											<div class="progress-bar bg-danger w-20"></div>
+											<div class="progress-bar bg-danger w-{{$week*10}}"></div>
 										</div>
 										<div class="d-flex align-items-end justify-content-between mg-b-5">
 											<h6 class="">This Month</h6>
-											<h6 class="font-weight-bold mb-1">05</h6>
+											<h6 class="font-weight-bold mb-1">{{$month}}</h6>
 										</div>
 										<div class="progress progress-sm mb-5">
-											<div class="progress-bar bg-info w-30"></div>
+											<div class="progress-bar bg-info w-{{$month*10}}"></div>
 										</div>
 										<div class="d-flex align-items-end justify-content-between mg-b-5">
 											<h6 class="">This Year</h6>
-											<h6 class="font-weight-bold mb-1">22</h6>
+											<h6 class="font-weight-bold mb-1">{{$year}}</h6>
 										</div>
 										<div class="progress progress-sm mb-5">
-											<div class="progress-bar bg-warning w-50"></div>
+											<div class="progress-bar bg-warning w-{{$year*10}}"></div>
 										</div>
 								</div>
 							</div>

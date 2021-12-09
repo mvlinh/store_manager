@@ -2,7 +2,8 @@
 @section('content')
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatable/dataTables.responsive.min.js')}}"></script>
 						<!-- End Row -->
 						@if(!empty($_GET['noti']) && $_GET['noti'] == 'already exist')
 					
@@ -48,8 +49,8 @@
 													</tr>
 												</thead>
 												<tbody>
-                          <?php $i = 1 ?>
-                          @foreach($cus as $item)
+													<?php $i = 1 ?>
+													@foreach($cus as $item)
 													<tr>
 														<td>{{$i++}}</td>
 														<td>
@@ -77,10 +78,9 @@
 															<a href="{{route('transfer_customer',['id'=>$item->id])}}"><button class="btn btn-danger  typcn typcn-plane-outline" style="font-size: 10px;">chuyển đi</button></a>
 														</td>
 													</tr>
-                          @endforeach
+                          						@endforeach
 												</tbody>
 											</table>
-                      {{ $cus->links();}}
 										</div>
 									</div>
 								</div>
@@ -90,9 +90,13 @@
 
 
 					</div>
-				</div><!-- end app-content-->
+				</div>
 			</div>
-@include('js.js')
 
 		</div>
+	<script>
+	$(document).ready( function () {
+		$('#hr-table').DataTable();
+	} );
+	</script>
 @endsection

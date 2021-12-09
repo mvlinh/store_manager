@@ -2,10 +2,10 @@
 							<div class="container-fluid">
 								<div class="d-flex">
 									<a class="header-brand" href="index.html">
-										<img src="assets/images/brand/logo.png" class="header-brand-img desktop-lgo" alt="Dayonelogo">
-										<img src="assets/images/brand/logo-white.png" class="header-brand-img dark-logo" alt="Dayonelogo">
-										<img src="assets/images/brand/favicon.png" class="header-brand-img mobile-logo" alt="Dayonelogo">
-										<img src="assets/images/brand/favicon1.png" class="header-brand-img darkmobile-logo" alt="Dayonelogo">
+										<img src="{{asset('assets/images/brand/logo.png')}}" class="header-brand-img desktop-lgo" alt="Dayonelogo">
+										<img src="{{asset('assets/images/brand/logo-white.png')}}" class="header-brand-img dark-logo" alt="Dayonelogo">
+										<img src="{{asset('assets/images/brand/favicon.png')}}" class="header-brand-img mobile-logo" alt="Dayonelogo">
+										<img src="{{asset('assets/images/brand/favicon1.png')}}" class="header-brand-img darkmobile-logo" alt="Dayonelogo">
 									</a>
 									<div class="app-sidebar__toggle" data-toggle="sidebar">
 										<a class="open-toggle" href="#">
@@ -15,38 +15,28 @@
 											<i class="feather feather-x"></i>
 										</a>
 									</div>
-									<div class="mt-0">
-										<form class="form-inline">
-											<div class="search-element">
-												<input type="search" class="form-control header-search" placeholder="Search…" aria-label="Search" tabindex="1">
-												<button class="btn btn-primary-color" >
-													<i class="feather feather-search"></i>
-												</button>
-											</div>
-										</form>
-									</div><!-- SEARCH -->
 									<div class="d-flex order-lg-2 my-auto ml-auto">
 										<a class="nav-link my-auto icon p-0 nav-link-lg d-md-none navsearch" href="#" data-toggle="search">
 											<i class="feather feather-search search-icon header-icon"></i>
 										</a>
 										<div class="dropdown header-flags">
 											<a class="nav-link icon" data-toggle="dropdown">
-												<img src="assets/images/flags/flag-png/united-kingdom.png" class="h-24" alt="img">
+												<img src="{{asset('assets/images/flags/flag-png/united-kingdom.png')}}" class="h-24" alt="img">
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow animated">
-												<a href="#" class="dropdown-item d-flex "> <span class="avatar  mr-3 align-self-center bg-transparent"><img src="assets/images/flags/flag-png/india.png" alt="img" class="h-24"></span>
+												<a href="#" class="dropdown-item d-flex "> <span class="avatar  mr-3 align-self-center bg-transparent"><img src="{{asset('assets/images/flags/flag-png/india.png')}}" alt="img" class="h-24"></span>
 													<div class="d-flex"> <span class="my-auto">India</span> </div>
 												</a>
-												<a href="#" class="dropdown-item d-flex"> <span class="avatar  mr-3 align-self-center bg-transparent"><img src="assets/images/flags/flag-png/united-kingdom.png" alt="img" class="h-24"></span>
+												<a href="#" class="dropdown-item d-flex"> <span class="avatar  mr-3 align-self-center bg-transparent"><img src="{{asset('assets/images/flags/flag-png/united-kingdom.png')}}" alt="img" class="h-24"></span>
 													<div class="d-flex"> <span class="my-auto">UK</span> </div>
 												</a>
-												<a href="#" class="dropdown-item d-flex"> <span class="avatar mr-3 align-self-center bg-transparent"><img src="assets/images/flags/flag-png/italy.png" alt="img" class="h-24"></span>
+												<a href="#" class="dropdown-item d-flex"> <span class="avatar mr-3 align-self-center bg-transparent"><img src="{{asset('assets/images/flags/flag-png/italy.png')}}" alt="img" class="h-24"></span>
 													<div class="d-flex"> <span class="my-auto">Italy</span> </div>
 												</a>
-												<a href="#" class="dropdown-item d-flex"> <span class="avatar mr-3 align-self-center bg-transparent"><img src="assets/images/flags/flag-png/united-states-of-america.png" class="h-24" alt="img"></span>
+												<a href="#" class="dropdown-item d-flex"> <span class="avatar mr-3 align-self-center bg-transparent"><img src="{{asset('assets/images/flags/flag-png/united-states-of-america.png')}}" class="h-24" alt="img"></span>
 													<div class="d-flex"> <span class="my-auto">US</span> </div>
 												</a>
-												<a href="#" class="dropdown-item d-flex"> <span class="avatar  mr-3 align-self-center bg-transparent"><img src="assets/images/flags/flag-png/spain.png" alt="img" class="h-24"></span>
+												<a href="#" class="dropdown-item d-flex"> <span class="avatar  mr-3 align-self-center bg-transparent"><img src="{{asset('assets/images/flags/flag-png/spain.png')}}" alt="img" class="h-24"></span>
 													<div class="d-flex"> <span class="my-auto">Spain</span> </div>
 												</a>
 											</div>
@@ -67,7 +57,7 @@
 													<a class="dropdown-item border-bottom" href="#">
 														<div class="d-flex align-items-center">
 															<div class="">
-																<span class="avatar avatar-md brround align-self-center cover-image" data-image-src="assets/images/users/2.jpg"></span>
+																<span class="avatar avatar-md brround align-self-center cover-image" data-image-src="{{asset('assets/images/users/2.jpg')}}"></span>
 															</div>
 															<div class="d-flex">
 																<div class="pl-3">
@@ -83,7 +73,7 @@
 													<a class="dropdown-item border-bottom" href="#">
 														<div class="d-flex align-items-center">
 															<div class="">
-																<span class="avatar avatar-md brround align-self-center cover-image" data-image-src="assets/images/users/2.jpg"></span>
+																<span class="avatar avatar-md brround align-self-center cover-image" data-image-src="{{asset('assets/images/users/2.jpg')}}"></span>
 															</div>
 															<div class="d-flex">
 																<div class="pl-3">

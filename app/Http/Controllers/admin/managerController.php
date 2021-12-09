@@ -6,7 +6,8 @@ use DB;
 use App\Http\Controllers\Controller;
 use App\Models\product;
 use Illuminate\Http\Request;
-
+use App\Models\employee;
+use phpDocumentor\Reflection\Types\Null_;
 class managerController extends Controller
 {
     public function dashboard(){
@@ -65,5 +66,96 @@ class managerController extends Controller
         }
        
         return response()->json($info);
+    }
+    public function viewemployee($id){
+        $info['employee'] = DB::table('employees')
+                            ->where('id', $id)->first();
+        $startweek  = Carbon::now()->startOfWeek();
+        $startmonth  = Carbon::now()->startOfMonth();
+        $startyear  = Carbon::now()->startOfYear();
+        $today = Carbon::now();
+        $info['week'] = DB::table('bill')->where('emp_care_id', $id)->whereBetween('created_at', [$startweek, $today])->count() + DB::table('bill')->where('emp_seller_id', $id)->whereBetween('created_at', [$startweek, $today])->count();
+        $info['month'] = DB::table('bill')->where('emp_care_id', $id)->whereBetween('created_at', [$startmonth, $today])->count() + DB::table('bill')->where('emp_seller_id', $id)->whereBetween('created_at', [$startmonth, $today])->count();
+        $info['year'] = DB::table('bill')->where('emp_care_id', $id)->whereBetween('created_at', [$startyear, $today])->count() + DB::table('bill')->where('emp_seller_id', $id)->whereBetween('created_at', [$startyear, $today])->count();       
+        return view('admin.pages.employee.view',$info);
+    }
+    public function editemployee(Request $request,$id){
+        
+        if($request->has('file_upload')){
+            $file = $request->file_upload;
+            $ext = $file->extension();
+            
+            $file_name = time().'-'.'avatar'.'.'.$ext;
+            $file->move(public_path('assets/images/users'),$file_name); 
+                $affected = DB::table('employees')
+                ->where('id', $id)
+                ->update(['name' => $file_name]);
+        
+        }
+        if($request->email != Null){
+            $affected = DB::table('employees')
+              ->where('id', $id)
+              ->update(['email' => $request->email]);
+        }
+        if($request->phone != Null){
+            $affected = DB::table('employees')
+              ->where('id', $id)
+              ->update(['phone' => $request->phone]);
+        }
+        if($request->DoB != Null){
+            $affected = DB::table('employees')
+              ->where('id', $id)
+              ->update(['DoB' => $request->DoB]);
+        }
+        if($request->name != Null){
+            $affected = DB::table('employees')
+              ->where('id', $id)
+              ->update(['name' => $request->name]);
+        }
+        if($request->address != Null){
+            $affected = DB::table('employees')
+              ->where('id', $id)
+              ->update(['address' => $request->address]);
+        }
+        
+        if($request->status != Null){
+            $affected = DB::table('employees')
+              ->where('id', $id)
+              ->update(['status' => $request->status]);
+        }
+        if($request->newpassword != Null){
+            $affected = DB::table('employees')
+              ->where('id', $id)
+              ->update(['newpassword' => bcrypt($request->newpassword)]);
+        }
+        $date = Carbon::now();
+        $affected = DB::table('employees')
+              ->where('id', $id)
+              ->update(['updated_at' => $date]);
+         return redirect()->back()->with('msg', 'Successfully');
+    }
+    public function employeesalary(){
+        $employee['employee'] = DB::table('employees')->get();
+        // dd($info['employee']);
+        $start = $employee['start'] = Carbon::now()->startOfMonth();
+        $employee['today'] = Carbon::now();
+        $employee['payroll_care'] = DB::table('bill')
+                                ->join('detailed_bill', 'bill.id',  'bill_id')
+                                ->join('product', 'detailed_bill.product_id', 'product.id')
+                                ->join('employees' ,'bill.emp_care_id','employees.id')
+                                ->whereBetween('bill.created_at',[$start, Carbon::now()])
+                                ->select('employees.id as id', DB::raw('SUM(quantity*price*commission) as sum'))
+                                ->groupByRaw('id')
+                                ->get();
+        $employee['payroll_sel'] = DB::table('bill')
+                                ->join('detailed_bill', 'bill.id', 'bill_id')
+                                ->join('product', 'detailed_bill.product_id', 'product.id')
+                                ->join('employees' ,'bill.emp_seller_id','employees.id')
+                                ->whereBetween('bill.created_at',[$start, Carbon::now()])
+                                ->select('employees.id as id', DB::raw('SUM(quantity*price*commission) as sum'))
+                                ->groupByRaw('id')
+                                ->get();
+    
+        return view('admin.pages.employee.employeesalary', $employee);
     }
 }

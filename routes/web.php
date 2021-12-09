@@ -87,12 +87,15 @@ Route::middleware(['loginRole'])->group(function () {
 });
 
 // admin
-// Route::middleware(['loginRole'])->group(function () {
+Route::middleware(['loginRole'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('dashboard','App\Http\Controllers\admin\managerController@dashboard')->name('admindashboard');
         Route::get('addemployee','App\Http\Controllers\admin\managerController@addemployee')->name('addemployee');
         Route::get('customertransferhistory','App\Http\Controllers\admin\managerController@customertransferhistory')->name('customertransferhistory');
         Route::get('showemployee','App\Http\Controllers\admin\managerController@showemployee')->name('showemployee');
         Route::post('lockemployee','App\Http\Controllers\admin\managerController@lockemployee')->name('lockemployee');
+        Route::get('viewemployee/{id}','App\Http\Controllers\admin\managerController@viewemployee')->name('viewemployee');
+        Route::post('editemployee/{id}','App\Http\Controllers\admin\managerController@editemployee')->name('editemployee');
+        Route::get('employeesalary','App\Http\Controllers\admin\managerController@employeesalary')->name('employeesalary');
     });
-// });
+});

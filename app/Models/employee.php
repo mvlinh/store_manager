@@ -24,5 +24,6 @@ class employee extends Model
         'email',
         'password',
         'status',
+        'avatar',
     ];
 }

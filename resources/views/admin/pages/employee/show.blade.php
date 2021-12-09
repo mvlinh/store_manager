@@ -2,7 +2,6 @@
 @section('content')
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('assets/plugins/datatable/dataTables.responsive.min.js')}}"></script>
 
@@ -55,9 +54,12 @@
 														@endif
 														<td>
 															<meta name="csrf-token" content="{{ csrf_token() }}">
-															<button class="btn btn-primary btn-icon btn-sm"  href="">
-																<i class="feather feather-edit" data-toggle="tooltip" data-original-title="View/Edit"></i>
-															</button>
+															<a href="{{route('viewemployee',['id' => $item->id])}}">
+																<button class="btn btn-primary btn-icon btn-sm"  href="">
+																	<i class="feather feather-edit" data-toggle="tooltip" data-original-title="View/Edit"></i>
+																</button>
+															</a>
+															
 															@if($item->status == 1)
 															<button class="btn btn-danger btn-icon btn-sm lock" id="{{$item->id}}" data-toggle="tooltip" onClick="reply_click(this.id)" >Khóa<i class="typcn typcn-lock-closed"></i></button>
 															@else
@@ -78,14 +80,6 @@
 			$('#hr-attendance').DataTable();
 		} );
 	</script>
-	
-	<script>
-		$(document).ready(function(){
-		$("p").click(function(){
-			$(this).hide();
-		});
-		});
-</script>
 <script type="text/javascript">
 	 $.ajaxSetup({
             headers: {

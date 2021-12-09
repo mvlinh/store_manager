@@ -16,7 +16,7 @@ class CustomerController extends Controller
       
     }
     public function show_customer(Request $request){
-        $customer['cus'] = DB::table('customer')->where('employee_id', Auth::id())->simplePaginate(10);
+        $customer['cus'] = DB::table('customer')->where('employee_id', Auth::id())->get();
         return view('pages.customers.show',$customer);
     }
     // public function add(Request $request){
