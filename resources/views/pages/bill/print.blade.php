@@ -74,7 +74,7 @@
                                        ?>
 									</div>
 								</div>
-                                    <div style="color: red; margin-left: 570px; font-size: 20px;">total: {{number_format($count)}} vnd</div>
+                                    <div style="color: red; margin-left: 570px; font-size: 20px;">Tổng: {{number_format($count)}} vnd</div>
 									</div>
 									<a href="{{route('invoice')}}">Quay lại</a>
 								</div>

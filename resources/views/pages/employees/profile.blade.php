@@ -133,7 +133,7 @@
                                 </div>
                                 @endif
                                 
-                                    <div class="d-flex align-items-end justify-content-between mg-b-5">
+                                    <!-- <div class="d-flex align-items-end justify-content-between mg-b-5">
 											<h6 class="">This Week</h6>
 											<h6 class="font-weight-bold mb-1">{{$week}}</h6>
 										</div>
@@ -141,7 +141,7 @@
 											<div class="progress-bar bg-danger w-{{$week*10}}"></div>
 										</div>
 										<div class="d-flex align-items-end justify-content-between mg-b-5">
-											<h6 class="">This Month</h6>
+											<h6 class="">Tuần này</h6>
 											<h6 class="font-weight-bold mb-1">{{$month}}</h6>
 										</div>
 										<div class="progress progress-sm mb-5">
@@ -153,7 +153,7 @@
 										</div>
 										<div class="progress progress-sm mb-5">
 											<div class="progress-bar bg-warning w-{{$year*10}}"></div>
-										</div>
+										</div> -->
 								</div>
 							</div>
 						</div>

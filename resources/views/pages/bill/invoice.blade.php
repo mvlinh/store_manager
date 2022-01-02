@@ -12,12 +12,13 @@
     <form class="row" action="{{route('create_order')}}" method="POST">
       @csrf
       <div class="col-md-6">
-        <label for="validationDefault01" class="form-label">Customer number</label>
+        <label for="validationDefault01" class="form-label">Số điện thoại khách hàng</label>
         <input type="text" class="form-control" name="phone" id="validationDefault01" value="" placeholder="0985734161" required>
       </div>
       @if(!empty($_GET['mess']))
       <div class="col-md-6"> 
-      <span style="color: red;">{{$_GET['mess']}}</span>
+        <span style="color: red;">{{$_GET['mess']}}</span>
+        <button class ="btn btn-danger"><a href="{{route('addCustomer')}}">Thêm khách hàng</a></button>
       </div>
       @endif
       <div class="col-md-6" style="margin-top: 24px;">
@@ -27,14 +28,14 @@
       <div class="col-md-6 ">
         <div class="card">
           <div class="card-header">
-              Products
+              Sản phẩm
           </div>
           <div class="card-body">
             <table class="table" id="products_table">
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Quantity</th>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,7 +43,7 @@
                         <tr id="product{{ $index }}">
                             <td>
                                 <select name="products[]" class="form-control" style="height: 34px;">
-                                    <option value="">-- choose product --</option>
+                                    <option value="">-- Chọn sản phẩm --</option>
                                     @foreach ($products as $product)
                                         <option value="{{ $product->id }}"{{ $oldProduct == $product->id ? ' selected' : '' }}>
                                             {{ $product->name }} (${{ number_format($product->price, 2) }})
@@ -61,8 +62,8 @@
 
               <div class="row">
                   <div class="col-md-12">
-                      <button id="add_row" class="btn btn-default pull-left">+ Add Row</button>
-                      <button id='delete_row' class="pull-right btn btn-danger">- Delete Row</button>
+                      <button id="add_row" class="btn btn-default pull-left">+ Thêm sản phẩm</button>
+                      <button id='delete_row' class="pull-right btn btn-danger">- Xóa sản phẩm</button>
                   </div>
               </div>
           </div>
@@ -70,9 +71,9 @@
         
       </div>
       <div class="col-md-12" style="margin-top: 20px;">
-        <button class="btn btn-danger" id="btn-submit" type="reset">reset form</button>
-        <button class="btn btn-primary" id="btn-submit" type="submit">Submit form</button>
-        </div>
+        <button class="btn btn-danger" id="btn-submit" type="reset">Xóa</button>
+        <button class="btn btn-primary" id="btn-submit" type="submit">Gửi</button>
+      </div>
     </form>
   </div>
 </div>

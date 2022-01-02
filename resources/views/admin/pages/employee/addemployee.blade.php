@@ -33,7 +33,7 @@
 						</div>
 
                         <div class="form-group">
-							<label for="">Phone <span style="color: red;">(*)</span></label>
+							<label for="">SĐT <span style="color: red;">(*)</span></label>
 							<input type="text" required name="phone" class="form-control" value="" placeholder="Nhập sdt">
 						</div>
                         <div class="form-group">
@@ -61,7 +61,6 @@
 						</div>
 
 						<button type="submit" name="sm_register" class="btn btn-danger">Đăng ký </button>
-						<span>Bạn đã có tài khoản <a href="index.php">Đăng nhập</a></span>
 
                 </form>
             </div>

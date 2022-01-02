@@ -32,20 +32,20 @@
 							<div class="col-xl-12 col-md-12 col-lg-12">
 								<div class="card">
 									<div class="card-header  border-0">
-										<h4 class="card-title">Customers List</h4>
+										<h4 class="card-title">Danh sách khách hàng</h4>
 									</div>
 									<div class="card-body">
 										<div class="table-responsive">
 											<table class="table  table-vcenter text-nowrap table-bordered border-bottom" id="hr-table">
 												<thead>
 													<tr>
-														<th class="border-bottom-0 w-5">No</th>
-														<th class="border-bottom-0">Name</th>
-														<th class="border-bottom-0 w-10">Phone</th>
-														<th class="border-bottom-0">Address</th>
+														<th class="border-bottom-0 w-5">STT</th>
+														<th class="border-bottom-0">Tên</th>
+														<th class="border-bottom-0 w-10">SĐT</th>
+														<th class="border-bottom-0">Địa chỉ</th>
 														<th class="border-bottom-0">Email</th>
-														<th class="border-bottom-0">Status</th>
-														<th class="border-bottom-0">Actions</th>
+														<th class="border-bottom-0">Trạng thái</th>
+														<th class="border-bottom-0">Thao tác</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -65,15 +65,15 @@
 														<td>{{$item->address}}</td>
 														<td>{{$item->email}}</td>
 														@if($item->status == 1)
-														<td><span class="badge badge-success" style="padding: 5px 26px ;">Active</span></td>
+														<td><span class="badge badge-success" style="min-width: 100px;">Hoạt Động</span></td>
 														@elseif($item->status == 2)
-														<td><span class="badge badge-warning">transferring</span></td>
+														<td><span class="badge badge-warning" style="min-width: 100px;">Đang chuyển</span></td>
 														@else
-														<td><span class="badge badge-danger" style="padding: 5px 28px ;">block</span></td>
+														<td><span class="badge badge-danger" style="min-width: 100px;">Đang khóa</span></td>
 														@endif
 														<td>
 															<a class="btn btn-primary btn-icon btn-sm"  href="{{route('customer_detail',['id'=>$item->id])}}">
-																<i class="feather feather-edit" data-toggle="tooltip" data-original-title="View"></i>
+																<i class="feather feather-edit" data-toggle="tooltip" data-original-title="Xem"></i>
 															</a>
 															<a href="{{route('transfer_customer',['id'=>$item->id])}}"><button class="btn btn-danger  typcn typcn-plane-outline" style="font-size: 10px;">chuyển đi</button></a>
 														</td>

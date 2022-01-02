@@ -39,11 +39,11 @@
                                                 <tr>
                                                     <th>Trạng Thái: </th>
                                                     @if($detail['0']->status == 1)
-														<td><span class="badge badge-success" style="padding: 5px 26px ; background-color: #0dcd94;">Active</span></td>
+														<td><span class="badge badge-success" style="padding: 5px 26px ; background-color: #0dcd94;">Hoạt động</span></td>
 														@elseif($detail['0']->status == 2)
-														<td><span class="badge badge-warning" style="padding: 6px 10px ; background-color: #fbc518;">transferring</span></td>
+														<td><span class="badge badge-warning" style="padding: 6px 10px ; background-color: #fbc518;">Đang chuyển</span></td>
 														@else
-														<td><span class="badge badge-danger" style="padding: 5px 28px; background-color: #f7284a;">block</span></td>
+														<td><span class="badge badge-danger" style="padding: 5px 28px; background-color: #f7284a;">Đang khóa</span></td>
 														@endif
                                                 </tr>
 												
@@ -61,6 +61,9 @@
 								<div class="card">
 									<div class="card-header border-bottom-0">
 										<h3 class="card-title">Danh mục sản phẩm quan tâm</h3>
+                                        <button class="btn btn-danger" data-toggle="modal" data-target="#add" style="color: red; margin-bottom: 10px;">
+                            Thêm Xóa sản phẩm quan tâm
+                        </button>
 									</div>
 									<div class="table-responsive">
 										<table class="table card-table table-vcenter text-nowrap table-primary mb-0">
@@ -96,9 +99,7 @@
 								</div>
 							</div>
 						</div>
-                        <button class="btn btn-danger" data-toggle="modal" data-target="#add" style="color: red; margin-bottom: 10px;">
-                            Thêm Xóa sản phẩm quan tâm
-                        </button>
+                       
        
                         <div class="row">
 							<div class="col-md-12 col-lg-12">
@@ -142,7 +143,7 @@
 							<div class="col-md-12 col-lg-12">
 								<div class="card">
 									<div class="card-header border-bottom-0">
-										<h3 class="card-title">Thông tin chăm sóc khách hàng:<span class="table_info" id="add_info" data-toggle="modal" data-target="#add_info_follow"><button class="btn btn-primary"> Add </button></span></h3>
+										<h3 class="card-title">Thông tin chăm sóc khách hàng:<span class="table_info" id="add_info" data-toggle="modal" data-target="#add_info_follow"><button class="btn btn-primary"> Thêm mới </button></span></h3>
 									</div>
 									<div class="table-responsive" >
 										<table id="comment_table" class="table_info table card-table table-vcenter text-nowrap table-primary mb-0">
@@ -285,6 +286,7 @@ $(document).ready(function() {
                     success : function(result){
                         console.log(result);
                         $('.table_info tbody').prepend('<tr><td>'+result.name+'</td><td>'+result.phone+'</td><td>'+result.phone+'</td><td>'+result.info+'</td></tr>');
+                        location.reload();
                     },
                         error : function(){
                             console.log('error');

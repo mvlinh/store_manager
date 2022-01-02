@@ -6,9 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use function PHPUnit\Framework\directoryExists;
-
-class loginRole
+class manager_login
 {
     /**
      * Handle an incoming request.
@@ -18,7 +16,7 @@ class loginRole
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
-    {   
+    {
         if(Auth::check()){
             return $next($request);
         }

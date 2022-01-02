@@ -87,7 +87,7 @@ Route::middleware(['loginRole'])->group(function () {
 });
 
 // admin
-Route::middleware(['loginRole'])->group(function () {
+Route::middleware(['manager_login'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('dashboard','App\Http\Controllers\admin\managerController@dashboard')->name('admindashboard');
         Route::get('addemployee','App\Http\Controllers\admin\managerController@addemployee')->name('addemployee');
@@ -97,5 +97,7 @@ Route::middleware(['loginRole'])->group(function () {
         Route::get('viewemployee/{id}','App\Http\Controllers\admin\managerController@viewemployee')->name('viewemployee');
         Route::post('editemployee/{id}','App\Http\Controllers\admin\managerController@editemployee')->name('editemployee');
         Route::get('employeesalary','App\Http\Controllers\admin\managerController@employeesalary')->name('employeesalary');
+        Route::get('holiday','App\Http\Controllers\admin\managerController@addholiday')->name('holiday');
+        Route::post('insertHoliday','App\Http\Controllers\admin\managerController@insertHoliday')->name('insertHoliday');
     });
 });

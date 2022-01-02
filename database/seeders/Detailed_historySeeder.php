@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use DB;
+Use Carbon\Carbon;
 class Detailed_historySeeder extends Seeder
 {
     /**
@@ -18,13 +19,17 @@ class Detailed_historySeeder extends Seeder
             'emp_send_id' => '1',
             'emp_receive_id' => '2',
             'customer_id' => '1',
-            'status' => '1'
+            'status' => '1',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
             'emp_send_id' => '2',
             'emp_receive_id' => '3',
             'customer_id' => '2',
-            'status' => '1'
+            'status' => '1',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             
         ]);

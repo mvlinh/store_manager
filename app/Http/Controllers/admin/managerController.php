@@ -26,6 +26,9 @@ class managerController extends Controller
                         ->wherebetween('bill.created_at',[$start,$end])
                         ->select( DB::raw('SUM(price * quantity) AS total'))
                         ->get();
+        $info['event'] = DB::table('holiday')
+                        ->where('date','>=',Carbon::now())
+                        ->get();
         return view('admin.pages.manager.dashboard',$info);
     }
     public function addemployee(){
@@ -157,5 +160,20 @@ class managerController extends Controller
                                 ->get();
     
         return view('admin.pages.employee.employeesalary', $employee);
+    }
+    public function addholiday(){
+        return view('admin.pages.holiday.addholiday');
+    } public function insertHoliday(Request $r){
+        DB::table('holiday')->insert([
+            [
+            'name' => $r->name,
+            'detail' => $r->detail,
+            'date' => $r->date,
+            'type' => $r->type,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+        ]);
+        return view('admin.pages.holiday.addholiday')->with('noti','Thêm thành công');
     }
 }

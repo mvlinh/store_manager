@@ -58,6 +58,9 @@ class employeeController extends Controller
         $employee['care'] = DB::table('bill')->where('emp_seller_id', Auth::id())->get();
         $employee['send'] = DB::table('detailed_history')->where('emp_send_id', Auth::id())->where('status',2)->get();
         $employee['recv'] = DB::table('detailed_history')->where('emp_receive_id', Auth::id())->where('status',2)->get();
+        $employee['event'] = DB::table('holiday')
+                        ->where('date','>=',Carbon::now())
+                        ->get();
         return view('pages.employees.dashboard',$employee);
     }
 }

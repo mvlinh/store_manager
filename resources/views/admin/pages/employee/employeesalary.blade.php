@@ -18,7 +18,7 @@
                                     <th class="border-bottom-0">Từ ngày</th>
                                     <th class="border-bottom-0">Đến ngày</th>
                                     <th class="border-bottom-0">Status</th>
-                                    <th class="border-bottom-0">Actions</th>
+                                    <th class="border-bottom-0">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,18 +46,9 @@
                                         <td><span class="badge badge-danger" style="padding: 5px 28px ;">block</span></td>
                                     @endif
                                     <td class="text-left">
-                                        <a href="#" class="action-btns" data-toggle="modal" data-target="#viewsalarymodal">
-                                            <i class="feather feather-eye text-primary" data-toggle="tooltip" data-placement="top" title="View"></i>
-                                        </a>
-                                        
-                                        <a href="#" class="action-btns" data-toggle="tooltip" data-placement="top" title="Download">
-                                            <i class="feather feather-download  text-secondary"></i>
-                                        </a>
+                                       
                                         <a href="#" class="action-btns" data-toggle="tooltip" data-placement="top" title="Print" onclick="javascript:window.print();">
                                             <i class="feather feather-printer text-success"></i>
-                                        </a>
-                                        <a href="#" class="action-btns" data-toggle="tooltip" data-placement="top" title="Share">
-                                            <i class="feather feather-share-2 text-warning"></i>
                                         </a>
                                     </td>
                                 </tr>

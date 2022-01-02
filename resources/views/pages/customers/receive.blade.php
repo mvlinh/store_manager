@@ -15,12 +15,12 @@
 										<table class="table card-table table-vcenter text-nowrap table-warning mb-0">
 											<thead  class="bg-warning text-white">
 											<tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Employee_send</th>
-                        <th scope="col">Employee_Phone</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">phone</th>
-                        <th scope="col">confirm</th>
+                        <th scope="col">STT</th>
+                        <th scope="col">Người Gửi</th>
+                        <th scope="col">SĐT người gửi</th>
+                        <th scope="col">Khách hàng</th>
+                        <th scope="col">SĐT khách hàng</th>
+                        <th scope="col">Xác nhận</th>
                       </tr>
 											</thead>
                       <tbody>

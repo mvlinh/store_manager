@@ -15,13 +15,13 @@
 										<table class="table card-table table-vcenter text-nowrap table-warning mb-0">
 											<thead  class="bg-warning text-white">
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Phone</th>
+                        <th scope="col">STT</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">SĐT</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Positon</th>
-                        <th scope="col">transfer</th>
+                        <th scope="col">Địa chỉ</th>
+                        <th scope="col">Quản lí</th>
+                        <th scope="col">Thao tác</th>
                       </tr>
 											</thead>
 											<tbody>
@@ -40,7 +40,6 @@
                       </tbody>
 										</table>
 									</div>
-									<!-- table-responsive -->
 								</div>
 							</div>
 						</div>

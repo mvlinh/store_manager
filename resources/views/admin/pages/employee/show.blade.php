@@ -4,7 +4,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('assets/plugins/datatable/dataTables.responsive.min.js')}}"></script>
-
 <div class="row">
 							<div class="col-xl-12 col-md-12 col-lg-12">
 								<div class="card">
@@ -24,8 +23,8 @@
 														<th class="border-bottom-0">Ngày sinh</th>
 														<th class="border-bottom-0">Địa chỉ</th>
 														<th class="border-bottom-0">Email</th>
-														<th class="border-bottom-0">Status</th>
-														<th class="border-bottom-0">Action</th>
+														<th class="border-bottom-0">Trạng thái</th>
+														<th class="border-bottom-0">Thao tác</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -48,9 +47,9 @@
 														<td>{{$item->address}}</td>
 														<td>{{$item->email}}</td>
 														@if($item->status == 1)
-														<td><span class="badge badge-success" style="padding: 5px 26px ;">Active</span></td>
+														<td><span class="badge badge-success" style="min-width: 100px">Hoạt động</span></td>
 														@else
-														<td><span class="badge badge-danger" style="padding: 5px 28px ;">block</span></td>
+														<td><span class="badge badge-danger" style="min-width: 100px">Đang khóa</span></td>
 														@endif
 														<td>
 															<meta name="csrf-token" content="{{ csrf_token() }}">
