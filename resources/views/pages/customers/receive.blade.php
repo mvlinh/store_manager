@@ -21,6 +21,7 @@
                         <th scope="col">Khách hàng</th>
                         <th scope="col">SĐT khách hàng</th>
                         <th scope="col">Xác nhận</th>
+                        <th scope="col">Chi Tiết</th>
                       </tr>
 											</thead>
                       <tbody>
@@ -33,6 +34,11 @@
                           <td>{{$item->name}}</td>
                           <td>{{$item->phone}}</td>
                           <td><button class="btn btn-primary" id="agree"><a href="{{route('agree_customer',['id'=>$item->id])}}"> Xác nhận</a> </button> <button class="btn btn-danger" id="refuse"><a href="{{route('refuse_customer',['id'=>$item->id])}}">Từ chối</a></button></td>
+                          <td>
+                            <a class="btn btn-primary btn-icon btn-sm"  href="{{route('customer_detail',['id'=>$item->customer_id])}}">
+																<i class="feather feather-edit" data-toggle="tooltip" data-original-title="Xem"></i>
+															</a>
+                          </td>
                         </tr>
                         @endforeach
                       </tbody>

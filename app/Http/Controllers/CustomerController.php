@@ -10,6 +10,8 @@ use App\Models\detail_product_care;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Http\Controllers\SendMailController;
+use Redirect;
 class CustomerController extends Controller
 {
     public function index(){
@@ -76,6 +78,21 @@ class CustomerController extends Controller
             return view('pages.customers.transfer_employee',$customer);
         }
     }
+    
+    function delete_transfer_id($id){
+        DB::table('detailed_history')
+            ->where([
+                ['emp_send_id', '=', Auth::id()],
+                ['customer_id', '=', $id],
+                ['status', '=', '2'],
+        ])->delete();
+        $transfer_customer = Customers::find($id);
+        $transfer_customer->status = 1;
+        $transfer_customer->updated_at = Carbon::now();
+        $transfer_customer->save();
+        return Redirect::back()->withErrors(['msg' => 'The Message']);
+    }
+
     function transfer_customer_toEmployee($id,$employee_id){
         $detail_history = new detailed_history;
         $detail_history->emp_send_id = Auth::id();
@@ -89,6 +106,8 @@ class CustomerController extends Controller
         $transfer_customer->status = 2;
         $transfer_customer->updated_at = Carbon::now();
         $transfer_customer->save();
+        $send = new SendMailController();
+        $send->sendMail(employee::find($employee_id));
         return redirect()->route('transfer_customer_show',['noti'=>'successfully']);
     }
     function receive_customer(){
@@ -97,7 +116,7 @@ class CustomerController extends Controller
                         ->join('customer','customer.id','customer_id')
                         ->where('emp_receive_id',Auth::id())
                         ->where('detailed_history.status',2)
-                        ->select('detailed_history.id as id','employees.name as send_name','employees.phone as send_phone','customer.name as name', 'customer.phone as phone')
+                        ->select('customer.id as customer_id','detailed_history.id as id','employees.name as send_name','employees.phone as send_phone','customer.name as name', 'customer.phone as phone')
                         ->get();
         // dd($data['detail']);
         return view('pages.customers.receive',$data);

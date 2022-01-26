@@ -21,16 +21,43 @@
 							</div>
 							
 						</div>
-						
-						<ul class="side-menu">
-							
-									<li><a href="{{route('admindashboard')}}" class="slide-item">Dashboard</a></li>
-									<li><a href="{{route('addemployee')}}" class="slide-item">Thêm nhân viên mới</a></li>
-									<li><a href="{{route('showemployee')}}" class="slide-item">quản lí nhân viên</a></li>
-									<li><a href="{{route('customertransferhistory')}}" class="slide-item">Lịch sử chuyển khách hàng</a></li>
-									<li><a href="{{route('employeesalary')}}" class="slide-item">Tính lương cho nhân viên</a></li>
-									<li><a href="{{route('holiday')}}" class="slide-item">Thêm ngày nghỉ</a></li>
+						<ul class="side-menu open">
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="{{route('admindashboard')}}">
+									<i class="feather feather-home sidemenu_icon"></i>
+									<span class="side-menu__label">Trang Chủ</span>
+								</a>
+							</li>
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="{{route('addemployee')}}">
+									<i class="feather feather-book  sidemenu_icon"></i>
+									<span class="side-menu__label">Thêm nhân viên mới</span>
+								</a>
+							</li>
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="{{route('showemployee')}}">
+									<i class="feather feather-user sidemenu_icon"></i>
+									<span class="side-menu__label">quản lí nhân viên</span>
+								</a>
+							</li>
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="{{route('customertransferhistory')}}">
+									<i class="feather feather-briefcase  sidemenu_icon"></i>
+									<span class="side-menu__label">Lịch sử chuyển khách hàng</span>
+								</a>
+							</li>
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="{{route('employeesalary')}}">
+									<i class="feather feather-headphones  sidemenu_icon"></i>
+									<span class="side-menu__label">Tính lương cho nhân viên</span>
+								</a>
+							</li>
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="{{route('holiday')}}">
+									<i class="feather feather-airplay  sidemenu_icon"></i>
+									<span class="side-menu__label">Thêm ngày nghỉ</span>
+								</a>
+							</li>
 						</ul>
-						
 					</div>
 </aside>

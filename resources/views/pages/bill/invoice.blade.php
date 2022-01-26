@@ -15,12 +15,18 @@
         <label for="validationDefault01" class="form-label">Số điện thoại khách hàng</label>
         <input type="text" class="form-control" name="phone" id="validationDefault01" value="" placeholder="0985734161" required>
       </div>
-      @if(!empty($_GET['mess']))
       <div class="col-md-6"> 
-        <span style="color: red;">{{$_GET['mess']}}</span>
-        <button class ="btn btn-danger"><a href="{{route('addCustomer')}}">Thêm khách hàng</a></button>
+      @if(!empty($_GET['message_product']))
+      <div class="alert alert-danger" role="alert">
+        {{$_GET['message_product']}}
       </div>
+      @elseif(!empty($_GET['message_customer']))
+      <div class="alert alert-danger" role="alert">
+        {{$_GET['message_customer']}}
+      </div>
+        <button class ="btn btn-danger"><a href="{{route('addCustomer')}}">Thêm khách hàng</a></button>
       @endif
+      </div>
       <div class="col-md-6" style="margin-top: 24px;">
         <button class="btn btn-danger add-customer" style="display: none" type="" data-toggle="modal" data-target="#customerModal">Thêm mới</button>
       </div>

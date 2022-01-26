@@ -16,7 +16,6 @@ class managerController extends Controller
         $end = Carbon::now()->endOfMonth();
         $info['month']  = Carbon::now()->month;
         $info['employees'] = DB::table('employees')
-                            ->whereColumn('employees.id','!=','employees.position_id')
                             ->get();
         $info['order'] = DB::table('bill')
                         ->wherebetween('created_at',[$start,$end])->get();

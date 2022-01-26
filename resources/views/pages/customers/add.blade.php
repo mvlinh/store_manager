@@ -8,7 +8,7 @@
     <input type="text" class="form-control" id="validationDefault01" value="" placeholder="0985734161" required>
   </div>
   <div class="col-md-12" style="margin-top: 24px;">
-    <button class="btn btn-danger add-customer" style="display: none" type="" data-toggle="modal" data-target="#customerModal">Thêm mới</button>
+    <button class="btn btn-danger add-customer" id="add-customer-form" style="display: none" type="" data-toggle="modal" data-target="#customerModal">Thêm mới</button>
   </div>
 
 
@@ -47,9 +47,10 @@
                         <input type="text" name="address" id="address" class="form-control" value="" placeholder="Nhập địa chỉ">
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" style="display: none;">
                         <label for="">Trạng thái <span style="color: red;">(*)</span></label>
-                        <input type="number" name="status" id="status" class="form-control" value="" placeholder="status">
+                        <input type="number" name="status" id="status" class="form-control" value="1" placeholder="status">
+                    
                     </div>
 
                     <button class="btn btn-primary" id="btn-submit" type="submit">Gửi</button>
@@ -123,6 +124,12 @@
 								</div>
 							</div>
 						</div>
+            <script>
+  $('#add-customer-form').on('click', function() {
+    const x = document.getElementById("validationDefault01").value ;
+    document.getElementById("phone").value = x; 
+  });
+</script>
 <script>
         $.ajaxSetup({
             headers: {
@@ -213,7 +220,7 @@
                         alert('Số Điện Thoại đã tồn tại');
                     }
                     else{
-                        $('#customerTable tbody').append('<tr><td>'+ @php $i++; echo $i @endphp + '</td><td>'+result.name+'</td><td>'+result.phone+'</td><td>'+result.address+'</td><td>'+result.status+'</td>	<td><span class="badge badge-dagge" style="background-color: #04aa6d;">Active</span></td><td><a class="btn btn-primary btn-icon btn-sm"  href="hr-empview.html"><i class="feather feather-edit" data-toggle="tooltip" data-original-title="View/Edit"></i></a></tr>');
+                        $('#customerTable tbody').append('<tr><td>'+ @php $i++; echo $i @endphp + '</td><td>'+result.name+'</td><td>'+result.phone+'</td><td>'+result.address+'</td><td>'+result.status+'</td>	<td><span class="badge badge-dagge" style="background-color: #04aa6d;">Hoạt Động</span></td><td><a class="btn btn-primary btn-icon btn-sm"  href="{{route('customer__detail')}}?id='+result.id+'"><i class="feather feather-edit" data-toggle="tooltip" data-original-title="View/Edit"></i></a></tr>');
                     }
                     
                     $('#add-customer')[0].reset();

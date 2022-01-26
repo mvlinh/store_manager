@@ -30,16 +30,43 @@
 								</div> -->
 							</div>
 						</div>
-						
-						<ul class="side-menu">
-							
-									<li><a href="{{route('dashboard')}}" class="slide-item">Dashboard</a></li>
-									<li><a href="{{route('manager_customer')}}" class="slide-item">Khách Hàng đang chăm sóc</a></li>
-									<li><a href="{{route('addCustomer')}}" class="slide-item">Thêm khách hàng</a></li>
-									<li><a href="{{route('transfer_customer_receive')}}" class="slide-item">Nhận khách hàng mới</a></li>
-									<li><a href="{{route('self_profile')}}" class="slide-item">Profile </a></li>
-									<li><a href="{{route('invoice')}}" class="slide-item">Xuất hóa đơn</a></li>
+						<ul class="side-menu open">
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="{{route('dashboard')}}">
+									<i class="feather feather-home sidemenu_icon"></i>
+									<span class="side-menu__label">Trang Chủ</span>
+								</a>
+							</li>
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="{{route('manager_customer')}}">
+									<i class="feather feather-book  sidemenu_icon"></i>
+									<span class="side-menu__label">Khách Hàng đang chăm sóc</span>
+								</a>
+							</li>
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="{{route('addCustomer')}}">
+									<i class="feather feather-user sidemenu_icon"></i>
+									<span class="side-menu__label">Thêm khách hàng</span>
+								</a>
+							</li>
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="{{route('transfer_customer_receive')}}">
+									<i class="feather feather-briefcase  sidemenu_icon"></i>
+									<span class="side-menu__label">Nhận khách hàng mới</span>
+								</a>
+							</li>
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="{{route('self_profile')}}">
+									<i class="feather feather-headphones  sidemenu_icon"></i>
+									<span class="side-menu__label">Profile</span>
+								</a>
+							</li>
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="{{route('invoice')}}">
+									<i class="feather feather-airplay  sidemenu_icon"></i>
+									<span class="side-menu__label">Xuất hóa đơn</span>
+								</a>
+							</li>
 						</ul>
-						
 					</div>
 				</aside>

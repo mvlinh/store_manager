@@ -31,10 +31,10 @@ class invoiceController extends Controller
                         ->where('phone',$request['phone'])
                         ->first();
         if($request['products']['0'] == 0){
-            return redirect()->route('invoice',['mess'=>'do not have product']);
+            return redirect()->route('invoice',['message_product'=>'Chưa có sản phẩm nào được chọn']);
         }
         else if($customer == null){
-            return redirect()->route('invoice',['mess'=>'customer not existed']);
+            return redirect()->route('invoice',['message_customer'=>'Khách hàng chưa tồn tại']);
         }
         else{
             $bill = new bill;

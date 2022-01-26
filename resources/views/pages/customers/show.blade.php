@@ -66,17 +66,32 @@
 														<td>{{$item->email}}</td>
 														@if($item->status == 1)
 														<td><span class="badge badge-success" style="min-width: 100px;">Hoạt Động</span></td>
-														@elseif($item->status == 2)
-														<td><span class="badge badge-warning" style="min-width: 100px;">Đang chuyển</span></td>
-														@else
-														<td><span class="badge badge-danger" style="min-width: 100px;">Đang khóa</span></td>
-														@endif
 														<td>
 															<a class="btn btn-primary btn-icon btn-sm"  href="{{route('customer_detail',['id'=>$item->id])}}">
 																<i class="feather feather-edit" data-toggle="tooltip" data-original-title="Xem"></i>
 															</a>
-															<a href="{{route('transfer_customer',['id'=>$item->id])}}"><button class="btn btn-danger  typcn typcn-plane-outline" style="font-size: 10px;">chuyển đi</button></a>
+															<a href="{{route('transfer_customer',['id'=>$item->id])}}"><button class="btn btn-success  typcn typcn-plane-outline" style="font-size: 10px;">chuyển đi</button></a>
 														</td>
+
+														@elseif($item->status == 2)
+														
+														<td><span class="badge badge-warning" style="min-width: 100px;">Đang chuyển</span></td>
+														<td>
+															<a class="btn btn-primary btn-icon btn-sm"  href="{{route('customer_detail',['id'=>$item->id])}}">
+																<i class="feather feather-edit" data-toggle="tooltip" data-original-title="Xem"></i>
+															</a>
+															<a href="{{route('delete_transfer',['id'=>$item->id])}}"><button class="btn btn-danger  typcn typcn-plane-outline" style="font-size: 10px;">Hủy chuyển</button></a>
+														</td>
+
+														@else
+														<td><span class="badge badge-danger" style="min-width: 100px;">Đang khóa</span></td>
+														<td>
+															<a class="btn btn-primary btn-icon btn-sm"  href="{{route('customer_detail',['id'=>$item->id])}}">
+																<i class="feather feather-edit" data-toggle="tooltip" data-original-title="Xem"></i>
+															</a>
+														</td>
+														@endif
+														
 													</tr>
                           						@endforeach
 												</tbody>
@@ -96,7 +111,7 @@
 		</div>
 	<script>
 	$(document).ready( function () {
-		$('#hr-table').DataTable();
+		$('table').DataTable();
 	} );
 	</script>
 @endsection

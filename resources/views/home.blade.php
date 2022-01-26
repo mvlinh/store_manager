@@ -48,6 +48,7 @@
 		
 	</body>
 @include('js.myjs')
+
 <!-- Mirrored from laravel.spruko.com/dayone/ltr/index by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Nov 2021 03:05:43 GMT -->
 </html>
 

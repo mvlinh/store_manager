@@ -11,10 +11,7 @@
 								<div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
 									<div class="btn-list">
 										<a href="{{route('addemployee')}}" class="btn btn-primary mr-3">Add New Employee</a>
-										<button  class="btn btn-light" data-toggle="tooltip" data-placement="top" title="E-mail"> <i class="feather feather-mail"></i> </button>
-										<button  class="btn btn-light" data-placement="top" data-toggle="tooltip" title="Contact"> <i class="feather feather-phone-call"></i> </button>
-										<button  class="btn btn-primary" data-placement="top" data-toggle="tooltip" title="Info"> <i class="feather feather-info"></i> </button>
-									</div>
+										</div>
 								</div>
 							</div>
 						</div>

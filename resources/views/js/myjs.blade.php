@@ -7,3 +7,8 @@
 
 <!-- Custom js-->
 <script src="{{asset('assets/js/custom.js')}}"></script>
+<script>
+	$(document).ready( function () {
+		$('table').DataTable();
+	} );
+</script>

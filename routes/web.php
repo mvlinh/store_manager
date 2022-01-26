@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\transferMail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -75,6 +76,8 @@ Route::middleware(['loginRole'])->group(function () {
 
         Route::get('transfer_customer/{id}','App\Http\Controllers\customerController@transfer_customer_id')->name('transfer_customer');
 
+        Route::get('delete_transfer/{id}','App\Http\Controllers\customerController@delete_transfer_id')->name('delete_transfer');
+       
         Route::get('transfer_customer_toEmployee/{id}/{employee_id}','App\Http\Controllers\customerController@transfer_customer_toEmployee')->name('transfer_customer_toEmployee');
 
         Route::get('transfer_customer_receive','App\Http\Controllers\customerController@receive_customer')->name('transfer_customer_receive');
@@ -85,7 +88,8 @@ Route::middleware(['loginRole'])->group(function () {
 
     });
 });
-
+//mail
+Route::get('send-mail/{user}','App\Http\Controllers\SendMailController@sendMail')->name('sendMail');
 // admin
 Route::middleware(['manager_login'])->group(function () {
     Route::prefix('admin')->group(function () {

@@ -26,7 +26,7 @@
 												<i class="feather feather-minimize fullscreen-button exit-fullscreen header-icons"></i>
 											</a>
 										</div> 
-										<div class="dropdown header-message">
+										<!-- <div class="dropdown header-message">
 											<a class="nav-link icon" data-toggle="dropdown">
 												<i class="feather feather-bell header-icon"></i>
 												<span class="badge badge-danger side-badge">5</span>
@@ -118,7 +118,7 @@
 													<a href="#" class="">See All Messages</a>
 												</div>
 											</div>
-										</div>
+										</div> -->
 										<!-- <div class="dropdown header-notify">
 											<a class="nav-link icon" data-toggle="sidebar-right" data-target=".sidebar-right">
 												<i class="feather feather-bell header-icon"></i>
